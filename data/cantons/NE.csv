@@ -1,0 +1,2 @@
+lake_id,Lake,Canton,Elevation,Area,is_lake_link,link,latlng,with_geojson,description,lake_type,max_length,max_width,max_depth,water_volume,Region,Date,Altitude,pH,Conductivity,Temperature,O2
+199,Lac des Taillères,Neuchâtel,1040,45.86,TRUE,https://en.wikipedia.org///wiki/Lac_des_Taill%C3%A8res,"[46.9672851, 6.5745833]",TRUE,"Lac des Taillères is a lake in the la Brévine valley in the Canton of Neuchâtel, Switzerland. Its surface area is 0.45 km2 (0.17 sq mi).",,1.9 km (1.2 mi),0.25 km (0.16 mi),7 m (23 ft),,,,,,,,

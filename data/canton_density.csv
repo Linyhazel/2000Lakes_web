@@ -1,0 +1,27 @@
+﻿id,name,density
+AI,Appenzell Innerrhoden,3
+BE,Bern,22
+FR,Fribourg,2
+GL,Glarus,7
+GR,Graubünden,64
+TI,Ticino,35
+JU,Jura,1
+NE,Neuchâtel,1
+NW,Nidwalden,2
+OW,Obwalden,5
+SZ,Schwyz,4
+SG,St. Gallen,8
+UR,Uri,9
+VS,Valais,69
+VD,Vaud,7
+LU,Luzern,0
+ZG,Zug,0
+SO,Solothurn,0
+BS,Basel-Stadt,0
+BL,Basel-Landschaft,0
+SH,Schaffhausen,0
+AR,Appenzell Ausserrhoden,0
+AG,Aargau,0
+TG,Thurgau,0
+GE,Genève,0
+ZH,Zürich,0

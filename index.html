@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/d3/2.10.0/d3.v2.min.js"></script>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+	<script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC9WNb8WzI-qcbOO_dP7soqYsXgEXeFcpY&libraries=places"></script>
+
+	<link href="./lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400" rel="stylesheet">
+
+	<title>Swiss Mountain Lakes</title>
+	<link rel="icon" href="data/Logo.png">
+
+	<link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+<div class="container" id="page">
+	<div class="svg-container">
+		<div id='title'>
+			<img src="data/Logo.png" height="100%">
+		</div>
+		
+		<svg id="bar"></svg>
+		<div id="intro"></div>
+
+		<div class="slider">
+			<div class="slides">
+				<input type="radio" name="radio-btn" onclick="changeRadioClass();" id="radio1" checked/>
+				<input type="radio" name="radio-btn" onclick="changeRadioClass();" id="radio2" />
+				<input type="radio" name="radio-btn" onclick="changeRadioClass();" id="radio3" />
+				<input type="radio" name="radio-btn" onclick="changeRadioClass();" id="radio4" />
+
+				<div class="first slide" id="temperature-slide">
+					<h2><a class="source" href="https://www.enr.gov.nt.ca/sites/enr/files/water_temperature.pdf" target="_blank" title="source">#1 Temperature:</a></h2>
+					<p class="slide-content">
+						Water takes a longer time to warm up or cool down compared to the air. When water cools down to 0°C, ice begins to form. Water at the bottom of a lake is typically 4°C if it is not frozen. <br/><br/> Water temperature is important because it determines where in the lake certain plants and animals can live. For example, some fish can only live in colder water and will therefore migrate during the summer period. Life stages of certain fish may require different temperatures. For example, Northern pike eggs will die if water temperature is higher than 19°C but adult fish will not die until water temperatures are above around 30°C. Some plants and animals will become dormant if water temperatures drop very low but will grow extremely quickly during the warmer waters of the summer.<br/><br/>
+					</p>
+					<p class="slide-content" style="margin-left: 50%">
+						Human activities can affect the water temperature directly. Quite often, water discharged from a sewage lagoon or from a tailings pond will be warmer than the water it is supposed to mix with in a lake. Climate change may also affect water temperature and therefore the ecosystem underwater. <br/><br/> 
+					<img src="data/info.png" height="25px">
+						Click the title to see the source, click the radio buttons to see more measured values.
+					</p>
+				</div>
+				<div class="slide" id="DO-slide">
+					<h2><a class="source" href="https://www.enr.gov.nt.ca/sites/enr/files/dissolved_oxygen.pdf" target="_blank" title="source">#2 Dissolved oxygen:</a></h2>
+					<p class="slide-content">
+						Oxygen from the atmosphere dissolves in lake water and becomes the oxygen that fish and other aquatic creatures use to breathe.
+						It depends on whether water is flowing, whether there are obstacles for water to flow over, the amount of plants growing in the water, and the temperature of the water. There is more oxygen in cold, flowing water with many obstacles and a moderate
+						amount of plants.<br/><br/>
+						Fish and other animals that live in the water need oxygen to live and they require a different amount of dissolved oxygen. If oxygen levels are too low in the water, they may suffocate and die.<br/><br/>
+						Large-scale industrial development, heavy use of fertilizers and dumping of human waste can pollute water quickly and lead to oxygen starvation. In polluted systems, overgrowth of animals, plants and bacteria cause the oxygen to be used up quickly.
+					</p>
+				</div>
+				<div class="slide" id="conductivity-slide">
+					<h2><a class="source" href="https://www.enr.gov.nt.ca/sites/enr/files/conductivity.pdf" target="_blank" title="source">#3 Conductivity:</a></h2>
+					<p class="slide-content">
+						Conductivity of a lake measures how easily electricity is flowing through the water. It depends on the content of ionized chemicals like salts, dissolved in the water and the temperature of the water. The higher the content of dissolved ionized chemicals and the higher the temperature, the higher the conductivity. <br/><br/>
+						Conductivity can reflect the saltiness of the lake. Fish and other organisms that live in freshwater cannot tolerate high saltiness because they will not be able to keep water in their bodies.<br/><br/>
+						Climate change may increase the saltiness of freshwater lakes if warmer conditions increase evaporation. Pollution will also increase conductivity of lakes because industrial and human wastewaters often have high conductivity.
+					</p>
+				</div>
+				<div class="slide" id="pH-slide">
+					<h2><a class="source" href="https://www.enr.gov.nt.ca/sites/enr/files/ph.pdf" target="_blank" title="source">#4 pH:</a></h2>
+					<p class="slide-content">
+						pH measures the acidity of a solution of water. It ranges from 0(strongly acidic) to 14(strongly basic). The middle is 7, indicating the pH is “neutral” (like in pure water).<br/><br/>
+						Most fish prefer to live in water that ranges in pH from around 6.4 to 8.4. Fish eggs grow and survive best at a narrower range of pH from 6.0 to 7.2.
+						<br/><br/>Freshwater is more vulnerable to pH shift compared to seawater. As organic substances decompose in the lake, carbon dioxide gas (CO2) is formed. This CO2 combines with water to form a weak acid and lowers the water’s pH over time. Human activities can also affect the pH of lakes by chemicals discharged from communities and industries. Acid rain caused by pollutants is an example.
+					</p>
+				</div>
+			</div>
+
+			<div class="navigation">
+				<label for="radio1" class="navigation-btn"></label>
+				<label for="radio2" class="navigation-btn"></label>
+				<label for="radio3" class="navigation-btn"></label>
+				<label for="radio4" class="navigation-btn"></label>
+			</div>
+		</div>
+	</div>
+
+	<div class="svg-container">
+		<select id="vizop" onchange="drawMap(this)">
+			<option value="byCoord" selected="selected">Lakes by coordinates</option>
+			<option value="byElevation">Lakes by elevation</option>
+			<option value="byArea">Lakes by surface area</option>
+		</select>
+
+		<div id="checkbox_google" onchange="drawMap(this)" style="background-color: #E4F8FB; font-size: 15px;">
+			<label for="googleCheck">Google Maps:</label> 
+			<input type="checkbox" id="googleCheck">
+			<div><div class='box' style="background-color: #DA291C;"></div>Sampled Lakes</div>
+			<div><div class='box' style="background-color: #90E0EF;"></div>Not Sampled Lakes</div>
+		</div>
+
+
+		<div id="map"></div>
+		<div id="map-tooltip" class="tooltip"></div>
+	</div>
+
+	<div id="lake_info" class="svg-container">
+		<svg id="lake_geojson"></svg>
+		<div id="lake_data"></div>
+		<div id="description">
+			<div id="text_descrition">Choose a lake</div>
+		</div>
+		<div id="lake_imgs"></div>
+		<div id="call_for_action">CALL FOR ACTION!</div>
+		<div id="map_invisible" style="visibility: hidden"></div>
+	</div>
+
+	<div id="game" class="svg-container">
+		<div id="chatBox">
+			<div id="dialogue"> 
+				<!-- <div class="botMsg" style="animation-delay: 1s;">Hello there! Are you interested in playing a game?</div>
+				<div class="botMsg" style="animation-delay: 3s;">
+					It's called Five-Question Game. I have a lake in mind, you need to guess which lake it is by asking at most 5 yes/no questions. I will only reply
+					yes or no to your question and ignore other questions. You win the game if you can guess which lake it is in the end ;)
+				</div>
+				<div class="botMsg" style="animation-delay: 9s;">Let's get started!</div>
+				<div class="userMsg" style="animation-delay: 10s;">sure!</div> -->
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="lib/d3.min.js"></script>
+<script type="text/javascript" src="lib/topojson.min.js"></script>
+<script type="text/javascript" src="bar.js"></script>
+<script type="text/javascript" src="radioBtn.js"></script>
+<script type="text/javascript" src="mapv2.js"></script>
+<script type="text/javascript" src="measures2.js"></script>
+<script type="text/javascript" src="resizeupdate.js"></script>
+<script type="text/javascript" src="game.js"></script>
+</body>
+</html>
