@@ -635,7 +635,7 @@ function lakeInfo(d){
         .style('opacity', 2);
 
     if(d.link == ""){
-        d.link = "docs/empty_wiki.html";
+        d.link = "./empty_wiki.html";
     }
     info_text_div.html("<h5>" + d.name + "  <a href="+d.link+" target=\"_blank\" title=\"to Wiki\"><img src=\"data/wiki.png\" height=\"20px\"></a></h5> ")
         .style('display', 'block');
