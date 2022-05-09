@@ -111,6 +111,7 @@ body{
   position: absolute;
   height: 20%;
   width: 20%;
+  top: 30px;
   /*background-color: powderblue;*/
 }
 
@@ -119,6 +120,7 @@ body{
   left: 20%;
   height: 20%;
   width: 80%;
+  top: 30px;
   /*background-color: greenyellow;*/
 }
 
@@ -137,6 +139,7 @@ body{
   width: 20%;
   text-align: center;
   padding: 3px 5px 3px 5px;
+  top: 30px;
   /*font: 1em sans-serif;*/
   /*background-color: #DA291C; /*#f7ebc3*/
 }
@@ -286,7 +289,7 @@ body{
 
 #lake_data{
   font-size: 15px;
-  top: 20px;
+  top: 50px;
 }
 
 .box {
@@ -303,9 +306,14 @@ body{
   color: #011A38;
 }
 
+#game_link{
+  text-decoration: none;
+  color: #DA291C;
+}
+
 #lake_imgs{
   position: absolute;
-  top: 21%;
+  top: 25%;
   width: 100%;
   height: 30%;
   /*background-color: yellow;*/
@@ -315,12 +323,15 @@ body{
 
 #call_for_action{
   position: absolute;
-  top: 52%;
-  width: 100%;
-  height: 48%;
-  background-color: #90E0EF;
+  /*top: 52%;*/
+  bottom: 50px;
+  left: 25%;
+  width: 50%;
+  height: auto;
+  /*background-color: #90E0EF;*/
   padding: 10px;
   text-align: center;
+  font-size: 17px;
 }
 
 .lake_img{
