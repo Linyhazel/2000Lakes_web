@@ -260,7 +260,7 @@ function renderWithGoogle(cantonId_to_density, canton_data, lake_info, map_data,
                     });
             }
 
-            var ongooglepath = d3.geoPath().projection(googleMapProjection);
+            var ongooglepath = d3.geo.path().projection(googleMapProjection);
             g.selectAll("path")
                 .data(map_data.features)
                 .attr("d", ongooglepath)
