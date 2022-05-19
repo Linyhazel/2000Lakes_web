@@ -1,6 +1,5 @@
 // random draw 5 questions from these 12 attributes
-const questions = [{"attribute": "canton", "question": "This lake located in canton", },
-                     {"attribute": "elevation", "question": "The elevation of this lake is in the range (in meter)"},
+const questions = [{"attribute": "elevation", "question": "The elevation of this lake is in the range (in meter)"},
                      {"attribute": "area", "question": "The surface area of this lake is"},
                      {"attribute": "link", "question": "This lake has its own wiki page."},
                      {"attribute": "ph", "question": "The measured pH value of this lake"},
@@ -123,7 +122,7 @@ function shuffle(array) {
     return array;
 }
 
-function respond(ele, total_lake_data){
+function respond(ele, total_lake_data, correct_answer = ""){
     //console.log(total_lake_data);
     ele.style.backgroundColor = "#90E0EF";
     disabledAllButtons();
@@ -151,7 +150,7 @@ function respond(ele, total_lake_data){
 
         // draw questions
         while(question_ids.length < 5){
-            var r = Math.floor(Math.random() * 12);
+            var r = Math.floor(Math.random() * 11);
             if(question_ids.indexOf(r) === -1) question_ids.push(r);
         }
         console.log(question_ids);
@@ -206,8 +205,9 @@ function respond(ele, total_lake_data){
             //final guess is wrong!
             var res = document.createElement("div");
             res.setAttribute("class", "botMsg");
-            res.innerText = "No, it's not what I have in mind, better luck next time :)";
+            res.innerText = "No, it's not what I have in mind, better luck next time :) I was thinking about lake "+correct_answer;
             res.style.animationDelay = "1s";
+            res.style.backgroundColor = "lightgray";
             dialogue_div.appendChild(res);
             dialogue_div.scrollTop = dialogue_div.scrollHeight;
 
@@ -217,8 +217,9 @@ function respond(ele, total_lake_data){
         else{
             var res = document.createElement("div");
             res.setAttribute("class", "botMsg");
-            res.innerText = wrong_res[Math.floor(Math.random() * wrong_res.length)];
+            res.innerText = wrong_res[Math.floor(Math.random() * wrong_res.length)] + " " + correct_answer;
             res.style.animationDelay = "1s";
+            res.style.backgroundColor = "lightgray";
             dialogue_div.appendChild(res);
             dialogue_div.scrollTop = dialogue_div.scrollHeight;
 
@@ -245,25 +246,32 @@ function renderQ(noQ, selected_lake_id, total_lake_data){
         shuffle(ops);
         console.log(ops);
 
-        renderOps(question, ops, total_lake_data); 
+        renderOps(question, ops, total_lake_data, total_lake_data[selected_lake_id].name); 
+    }
+    else if(noQ == 0){
+        question.innerText = "This lake in my mind is located in canton"
+        var ops = [];
+        
+        ops.push([total_lake_data[selected_lake_id].canton, "correct"]);
+        while(ops.length < 3){
+            var r = Math.floor(Math.random() * 26);
+            if(cantons[r] != total_lake_data[selected_lake_id].canton && ops.indexOf([cantons[r], "wrong"]) === -1) ops.push([cantons[r], "wrong"]);
+        }
+        shuffle(ops);
+        console.log(ops);
+        renderOps(question, ops, total_lake_data, "This lake is located in "+total_lake_data[selected_lake_id].canton); 
     }
     else{
         question.innerText = questions[question_ids[noQ]].question;
+        correct_ans = "";
 
         //generate options
-        var ops = [];
-        if(question_ids[noQ] == 0){ //canton
-            ops.push([total_lake_data[selected_lake_id].canton, "correct"]);
-            while(ops.length < 3){
-                var r = Math.floor(Math.random() * 26);
-                if(cantons[r] != total_lake_data[selected_lake_id].canton && ops.indexOf([cantons[r], "wrong"]) === -1) ops.push([cantons[r], "wrong"]);
-            }
-        }
-        else if(question_ids[noQ] == 1){//elevation
+        if(question_ids[noQ] == 0){//elevation
             var r11 = parseInt(total_lake_data[selected_lake_id].elevation/100)*100 - 50,
                 r12 = parseInt(total_lake_data[selected_lake_id].elevation/100)*100 + 50;
             console.log(r11, r12);
             ops.push([r11+" to "+r12,"correct"]);
+            correct_ans = "The elevation of this lake is in the range "+r11+" meters to "+r12;
             var ran = [Math.floor(Math.random()*2), Math.floor(Math.random()*2)], r21, r22, r31, r32; //[0,0]: both smaller than correct answer, 1: larger
             for (let i = 0; i < ran.length; i++){
                 if(ran[i] == 0){
@@ -282,93 +290,114 @@ function renderQ(noQ, selected_lake_id, total_lake_data){
                 }
             }
         }
-        else if(question_ids[noQ] == 2){// area
+        else if(question_ids[noQ] == 1){// area
             var a = total_lake_data[selected_lake_id].area;
             ops = [["unknown", "wrong"], ["< 100 hectares", "wrong"], [">= 100 hectares", "wrong"]];
             if(a == ""){
                 ops[0][1] = "correct";
+                correct_ans = "The surface area is unknown.";
             }
             else{
                 if(a >= 100){
                     ops[2][1] = "correct";
+                    correct_ans = "The surface area is >= 100 hectares";
                 }
                 else{
                     ops[1][1] = "correct";
+                    correct_ans = "The surface area is < 100 hectares";
                 }
             }
         }
-        else if(question_ids[noQ] == 3){// link
+        else if(question_ids[noQ] == 2){// link
             var link = total_lake_data[selected_lake_id].link;
             ops = [["Yes, I can get more information there.", "wrong"], ["No, someone create a wikipage for it please.", "wrong"]];
             if(a == ""){
                 ops[1][1] = "correct";
+                correct_ans = "This lake does not have its own wikipage.";
             }
             else{
                 ops[0][1] = "correct";
+                correct_ans = "This lake has its own wikipage.";
             }
         }
-        else if(question_ids[noQ] == 4){// ph
+        else if(question_ids[noQ] == 3){// ph
             var ph = total_lake_data[selected_lake_id].ph;
             ops = [["is unknown.", "wrong"], ["is dangerous for the fish.", "wrong"], ["creates pressure for some fish.", "wrong"], ["shows best condition.", "wrong"]];
             if(ph == ""){
                 ops[0][1] = "correct";
+                correct_ans = "The pH value is unknown.";
             }
             else if(parseFloat(ph)<4 || parseFloat(ph)>11.5){
                 ops[1][1] = "correct";
+                correct_ans = "The pH value is dangerous for the fish..";
             }
             else if(parseFloat(ph)>6.5 && parseFloat(ph)<8.5){
                 ops[3][1] = "correct";
+                correct_ans = "The pH value hows best condition.";
             }
             else{
                 ops[2][1] = "correct";
+                correct_ans = "The pH value creates pressure for some fish.";
             }
         }
-        else if(question_ids[noQ] == 5){// cond
+        else if(question_ids[noQ] == 4){// cond
             var cond = total_lake_data[selected_lake_id].cond;
             ops = [["is unknown.", "wrong"], ["is in the low range.", "wrong"], ["is in the mid range.", "wrong"], ["is in the high range.", "wrong"]];
             if(cond == ""){
                 ops[0][1] = "correct";
+                correct_ans = "The conductivity is unknown.";
             }
             else if(parseFloat(cond)<200){
                 ops[1][1] = "correct";
+                correct_ans = "The conductivity is in the low range.";
             }
             else if(parseFloat(cond)<1000){
                 ops[2][1] = "correct";
+                correct_ans = "The conductivity is in the mid range.";
             }
             else{
                 ops[3][1] = "correct";
+                correct_ans = "The conductivity is in the high range.";
             }
         }
-        else if(question_ids[noQ] == 6){// temp
+        else if(question_ids[noQ] == 5){// temp
             var temp = total_lake_data[selected_lake_id].temp;
             ops = [["is unknown.", "wrong"], ["is below 12°C.", "wrong"], ["is higher than 12°C.", "wrong"]];
             if(temp == ""){
                 ops[0][1] = "correct";
+                correct_ans = "The temperature is unknown.";
             }
             else if(parseFloat(temp)<12){
                 ops[1][1] = "correct";
+                correct_ans = "The temperature is below 12°C.";
             }
             else{
                 ops[2][1] = "correct";
+                correct_ans = "The temperature is higher than 12°C.";
             }
         }
-        else if(question_ids[noQ] == 7){// o2
+        else if(question_ids[noQ] == 6){// o2
             var o2 = total_lake_data[selected_lake_id].o2;
             ops = [["is unknown.", "wrong"], ["is dangerous for all fish.", "wrong"], ["allows very few fish to live.", "wrong"], ["creates pressure for some fish especialy the small ones.", "wrong"], ["is safe for all fish.", "wrong"]];
             if(o2 == ""){
                 ops[0][1] = "correct";
+                correct_ans = "The level of dissolved oxygen is unknown.";
             }
             else if(parseFloat(o2)<4){
                 ops[1][1] = "correct";
+                correct_ans = "The level of dissolved oxygen is dangerous for all fish.";
             }
             else if(parseFloat(o2)<6.5){
                 ops[2][1] = "correct";
+                correct_ans = "The level of dissolved oxygen allows very few fish to live.";
             }
             else if(parseFloat(o2)<9.5){
                 ops[3][1] = "correct";
+                correct_ans = "The level of dissolved oxygen creates pressure for some fish especialy the small ones.";
             }
             else{
                 ops[4][1] = "correct";
+                correct_ans = "The level of dissolved oxygen is safe for all fish.";
             }
         }
         else{
@@ -376,15 +405,17 @@ function renderQ(noQ, selected_lake_id, total_lake_data){
             ops = [["unknown.", "wrong"], ["known.", "wrong"]];
             if(va == ""){
                 ops[0][1] = "correct";
+                correct_ans = "Correct answer is unknown.";
             }
             else{
                 ops[1][1] = "correct";
+                correct_ans = "Correct answer is known.";
             }
         }
 
         shuffle(ops);
         console.log(ops);
-        renderOps(question, ops, total_lake_data);        
+        renderOps(question, ops, total_lake_data, correct_ans);        
     }
 
     question.style.animationDelay = "2s";
@@ -392,14 +423,14 @@ function renderQ(noQ, selected_lake_id, total_lake_data){
     dialogue_div.scrollTop = dialogue_div.scrollHeight;
 }
 
-function renderOps(question, op_list, total_lake_data){
+function renderOps(question, op_list, total_lake_data, correct_answer){
     for (let i = 0; i < op_list.length; i++) {
         var choice = document.createElement("div");
         choice.setAttribute("class", "choice");
         choice.setAttribute("name", "choice_btn");
         choice.innerText = op_list[i][0];
         choice.value = op_list[i][1];
-        choice.onclick = function() {respond(this, total_lake_data)};
+        choice.onclick = function() {respond(this, total_lake_data, correct_answer)};
         question.appendChild(choice);
     }
 }
