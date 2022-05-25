@@ -221,7 +221,7 @@ lake_id,Lake,Canton,Elevation,Area,is_lake_link,link,latlng,with_geojson,descrip
 220,Grünsee,Valais,2303,,FALSE,,"[46.0056, 7.7857]",TRUE,,,,,,,Zermatt,04.09.21,2303,"8,93",315,"17,1","8,53"
 221,Mossjesee,Valais,2139,,FALSE,,"[46.01045759531077, 7.779742209298814]",TRUE,,,,,,,Zermatt,05.09.21,2139,"8,08",295,13,"8,81"
 222,Leisee,Valais,2232,,FALSE,,"[46.0150833, 7.772596599999999]",TRUE,,,,,,,Zermatt,06.09.21,2232,"9,25",250,"18,5","8,88"
-223,Lac de Tracouet,Valais,2171,,FALSE,,"[6.436987, 7.875224]",TRUE,,,,,,,Nendaz,12.09.21,2171,"8,87","27,2","17,9","8,28"
+223,Lac de Tracouet,Valais,2171,,FALSE,,"[46.159680, 7.283814]",TRUE,,,,,,,Nendaz,12.09.21,2171,"8,87","27,2","17,9","8,28"
 224,Grundsee,Valais,1842,,FALSE,,"[46.818188, 8.227511999999999]",TRUE,,,,,,,Lötschental,17.09.21,1842,"7,3","125,6","5,6","9,33"
 225,Guggisee,Valais,2007,,FALSE,,"[46.435364, 7.854890]",TRUE,,,,,,,Lötschental,18.09.21,2007,"7,3",20,16,"8,39"
 226,Faflersee,Valais,1796,,FALSE,,"[46.818188, 8.227511999999999]",FALSE,,,,,,,Lötschental,19.09.21,1796,"9,1","56,7","18,4","9,7"
