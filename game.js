@@ -232,6 +232,7 @@ function respond(ele, total_lake_data, correct_answer = ""){
 function renderQ(noQ, selected_lake_id, total_lake_data){
     var question = document.createElement("div");
     question.setAttribute("class", "botMsg");
+    var ops = [];
     
     if(noQ == 5){
         question.innerText = "Alright now, what is the lake in my mind?"
@@ -242,15 +243,14 @@ function renderQ(noQ, selected_lake_id, total_lake_data){
             if(random_ids.indexOf(r) === -1) random_ids.push(r);
         }
         //[["name", "correct"],["name", "wrong"],["name", "wrong"]]
-        var ops = [[total_lake_data[selected_lake_id].name, "correct"], [total_lake_data[random_ids[0]].name, "wrong"], [total_lake_data[random_ids[1]].name, "wrong"]]
+        ops = [[total_lake_data[selected_lake_id].name, "correct"], [total_lake_data[random_ids[0]].name, "wrong"], [total_lake_data[random_ids[1]].name, "wrong"]]
         shuffle(ops);
         console.log(ops);
 
         renderOps(question, ops, total_lake_data, total_lake_data[selected_lake_id].name); 
     }
     else if(noQ == 0){
-        question.innerText = "This lake in my mind is located in canton"
-        var ops = [];
+        question.innerText = "This lake in my mind is located in canton";
         
         ops.push([total_lake_data[selected_lake_id].canton, "correct"]);
         while(ops.length < 3){
