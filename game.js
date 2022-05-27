@@ -205,7 +205,7 @@ function respond(ele, total_lake_data, correct_answer = ""){
             //final guess is wrong!
             var res = document.createElement("div");
             res.setAttribute("class", "botMsg");
-            res.innerText = "No, it's not what I have in mind, better luck next time :) I was thinking about lake "+correct_answer;
+            res.innerHTML = "No, it's not what I have in mind, better luck next time :) I was thinking about lake <span class='cr'>"+correct_answer+"</span>.";
             res.style.animationDelay = "1s";
             res.style.backgroundColor = "lightgray";
             dialogue_div.appendChild(res);
@@ -217,7 +217,7 @@ function respond(ele, total_lake_data, correct_answer = ""){
         else{
             var res = document.createElement("div");
             res.setAttribute("class", "botMsg");
-            res.innerText = wrong_res[Math.floor(Math.random() * wrong_res.length)] + " " + correct_answer;
+            res.innerHTML = wrong_res[Math.floor(Math.random() * wrong_res.length)]+" "+correct_answer;
             res.style.animationDelay = "1s";
             res.style.backgroundColor = "lightgray";
             dialogue_div.appendChild(res);
@@ -259,7 +259,7 @@ function renderQ(noQ, selected_lake_id, total_lake_data){
         }
         shuffle(ops);
         console.log(ops);
-        renderOps(question, ops, total_lake_data, "This lake is located in "+total_lake_data[selected_lake_id].canton); 
+        renderOps(question, ops, total_lake_data, "This lake is located in <span class='cr'>"+total_lake_data[selected_lake_id].canton+"</span>."); 
     }
     else{
         question.innerText = questions[question_ids[noQ]].question;
@@ -271,7 +271,7 @@ function renderQ(noQ, selected_lake_id, total_lake_data){
                 r12 = parseInt(total_lake_data[selected_lake_id].elevation/100)*100 + 50;
             console.log(r11, r12);
             ops.push([r11+" to "+r12,"correct"]);
-            correct_ans = "The elevation of this lake is in the range "+r11+" meters to "+r12;
+            correct_ans = "The elevation of this lake is in the range <span class='cr'>"+r11+" meters to "+r12+"</span>.";
             var ran = [Math.floor(Math.random()*2), Math.floor(Math.random()*2)], r21, r22, r31, r32; //[0,0]: both smaller than correct answer, 1: larger
             for (let i = 0; i < ran.length; i++){
                 if(ran[i] == 0){
@@ -295,16 +295,16 @@ function renderQ(noQ, selected_lake_id, total_lake_data){
             ops = [["unknown", "wrong"], ["< 100 hectares", "wrong"], [">= 100 hectares", "wrong"]];
             if(a == ""){
                 ops[0][1] = "correct";
-                correct_ans = "The surface area is unknown.";
+                correct_ans = "The surface area is <span class='cr'>unknown</span>.";
             }
             else{
                 if(a >= 100){
                     ops[2][1] = "correct";
-                    correct_ans = "The surface area is >= 100 hectares";
+                    correct_ans = "The surface area is<span class='cr'> >= 100 hectares</span>.";
                 }
                 else{
                     ops[1][1] = "correct";
-                    correct_ans = "The surface area is < 100 hectares";
+                    correct_ans = "The surface area is <span class='cr'>< 100 hectares</span>.";
                 }
             }
         }
@@ -313,11 +313,11 @@ function renderQ(noQ, selected_lake_id, total_lake_data){
             ops = [["Yes, I can get more information there.", "wrong"], ["No, someone create a wikipage for it please.", "wrong"]];
             if(a == ""){
                 ops[1][1] = "correct";
-                correct_ans = "This lake does not have its own wikipage.";
+                correct_ans = "<span class='cr'>This lake does not have its own wikipage</span>.";
             }
             else{
                 ops[0][1] = "correct";
-                correct_ans = "This lake has its own wikipage.";
+                correct_ans = "<span class='cr'>This lake has its own wikipage</span>.";
             }
         }
         else if(question_ids[noQ] == 3){// ph
@@ -325,19 +325,19 @@ function renderQ(noQ, selected_lake_id, total_lake_data){
             ops = [["is unknown.", "wrong"], ["is dangerous for the fish.", "wrong"], ["creates pressure for some fish.", "wrong"], ["shows best condition.", "wrong"]];
             if(ph == ""){
                 ops[0][1] = "correct";
-                correct_ans = "The pH value is unknown.";
+                correct_ans = "The pH value <span class='cr'>is unknown</span>.";
             }
             else if(parseFloat(ph)<4 || parseFloat(ph)>11.5){
                 ops[1][1] = "correct";
-                correct_ans = "The pH value is dangerous for the fish..";
+                correct_ans = "The pH value <span class='cr'>is dangerous for the fish</span>.";
             }
             else if(parseFloat(ph)>6.5 && parseFloat(ph)<8.5){
                 ops[3][1] = "correct";
-                correct_ans = "The pH value hows best condition.";
+                correct_ans = "The pH value <span class='cr'>shows best condition</span>.";
             }
             else{
                 ops[2][1] = "correct";
-                correct_ans = "The pH value creates pressure for some fish.";
+                correct_ans = "The pH value <span class='cr'>creates pressure for some fish</span>.";
             }
         }
         else if(question_ids[noQ] == 4){// cond
@@ -345,19 +345,19 @@ function renderQ(noQ, selected_lake_id, total_lake_data){
             ops = [["is unknown.", "wrong"], ["is in the low range.", "wrong"], ["is in the mid range.", "wrong"], ["is in the high range.", "wrong"]];
             if(cond == ""){
                 ops[0][1] = "correct";
-                correct_ans = "The conductivity is unknown.";
+                correct_ans = "The conductivity <span class='cr'>is unknown</span>.";
             }
             else if(parseFloat(cond)<200){
                 ops[1][1] = "correct";
-                correct_ans = "The conductivity is in the low range.";
+                correct_ans = "The conductivity <span class='cr'>is in the low range</span>.";
             }
             else if(parseFloat(cond)<1000){
                 ops[2][1] = "correct";
-                correct_ans = "The conductivity is in the mid range.";
+                correct_ans = "The conductivity <span class='cr'>is in the mid range</span>.";
             }
             else{
                 ops[3][1] = "correct";
-                correct_ans = "The conductivity is in the high range.";
+                correct_ans = "The conductivity <span class='cr'>is in the high range</span>.";
             }
         }
         else if(question_ids[noQ] == 5){// temp
@@ -365,15 +365,15 @@ function renderQ(noQ, selected_lake_id, total_lake_data){
             ops = [["is unknown.", "wrong"], ["is below 12°C.", "wrong"], ["is higher than 12°C.", "wrong"]];
             if(temp == ""){
                 ops[0][1] = "correct";
-                correct_ans = "The temperature is unknown.";
+                correct_ans = "The temperature <span class='cr'>is unknown</span>.";
             }
             else if(parseFloat(temp)<12){
                 ops[1][1] = "correct";
-                correct_ans = "The temperature is below 12°C.";
+                correct_ans = "The temperature <span class='cr'>is below 12°C</span>.";
             }
             else{
                 ops[2][1] = "correct";
-                correct_ans = "The temperature is higher than 12°C.";
+                correct_ans = "The temperature <span class='cr'>is higher than 12°C</span>.";
             }
         }
         else if(question_ids[noQ] == 6){// o2
@@ -381,23 +381,23 @@ function renderQ(noQ, selected_lake_id, total_lake_data){
             ops = [["is unknown.", "wrong"], ["is dangerous for all fish.", "wrong"], ["allows very few fish to live.", "wrong"], ["creates pressure for some fish especialy the small ones.", "wrong"], ["is safe for all fish.", "wrong"]];
             if(o2 == ""){
                 ops[0][1] = "correct";
-                correct_ans = "The level of dissolved oxygen is unknown.";
+                correct_ans = "The level of dissolved oxygen <span class='cr'>is unknown</span>.";
             }
             else if(parseFloat(o2)<4){
                 ops[1][1] = "correct";
-                correct_ans = "The level of dissolved oxygen is dangerous for all fish.";
+                correct_ans = "The level of dissolved oxygen <span class='cr'>is dangerous for all fish</span>.";
             }
             else if(parseFloat(o2)<6.5){
                 ops[2][1] = "correct";
-                correct_ans = "The level of dissolved oxygen allows very few fish to live.";
+                correct_ans = "The level of dissolved oxygen <span class='cr'>allows very few fish to live</span>.";
             }
             else if(parseFloat(o2)<9.5){
                 ops[3][1] = "correct";
-                correct_ans = "The level of dissolved oxygen creates pressure for some fish especialy the small ones.";
+                correct_ans = "The level of dissolved oxygen <span class='cr'>creates pressure for some fish especialy the small ones</span>.";
             }
             else{
                 ops[4][1] = "correct";
-                correct_ans = "The level of dissolved oxygen is safe for all fish.";
+                correct_ans = "The level of dissolved oxygen <span class='cr'>is safe for all fish</span>.";
             }
         }
         else{
@@ -405,11 +405,11 @@ function renderQ(noQ, selected_lake_id, total_lake_data){
             ops = [["unknown.", "wrong"], ["known.", "wrong"]];
             if(va == ""){
                 ops[0][1] = "correct";
-                correct_ans = "Correct answer is unknown.";
+                correct_ans = "Correct answer is <span class='cr'>unknown</span>.";
             }
             else{
                 ops[1][1] = "correct";
-                correct_ans = "Correct answer is known.";
+                correct_ans = "Correct answer is <span class='cr'>known</span>.";
             }
         }
 
