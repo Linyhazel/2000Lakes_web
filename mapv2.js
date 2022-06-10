@@ -51,7 +51,7 @@ const lake_promise = d3.csv("data/full_data.csv").then((data) => {
         var cant = row.Canton.split('/')[0]
         var lake = {lakeId: row.lake_id, name: row.Lake, link:row.link, canton: cant, elevation: parseInt(row.Elevation), area: parseFloat(row.Area), 
                 lon: parseFloat(row.latlng.slice(1, -1).split(", ")[1]), lat: parseFloat(row.latlng.slice(1, -1).split(", ")[0]),l: row.max_length, w: row.max_width, dep: row.max_depth,
-                volumn: row.water_volume, ph: row.pH, cond: row.Conductivity , temp: row.Temperature , o2: row.O2 };
+                volumn: row.water_volume, ph: row.pH, cond: row.Conductivity , temp: row.Temperature , o2: row.O2, s16: row['16S'], s18: row['18S']};
         lake_info.push(lake);
     });
     return lake_info;
@@ -434,7 +434,7 @@ function drawCantonLakes(cid, scale, g_coord){
         data.forEach((row) => {
             var lake = {lakeId: row.lake_id, name: row.Lake, link:row.link, canton: row.Canton, elevation: parseInt(row.Elevation), area: parseFloat(row.Area), 
                     lon: parseFloat(row.latlng.slice(1, -1).split(", ")[1]), lat: parseFloat(row.latlng.slice(1, -1).split(", ")[0]),l: row.max_length, w: row.max_width, dep: row.max_depth,
-                    volumn: row.water_volume, ph: row.pH, cond: row.Conductivity , temp: row.Temperature , o2: row.O2 };
+                    volumn: row.water_volume, ph: row.pH, cond: row.Conductivity , temp: row.Temperature , o2: row.O2,  s16: row['16S'], s18: row['18S'] };
             lake_info.push(lake);
         });
 
@@ -483,7 +483,7 @@ function drawCantonLakesbyElevation(cid, scale, g_coord){
         data.forEach((row) => {
             var lake = {lakeId: row.lake_id, name: row.Lake, link:row.link, canton: row.Canton, elevation: parseInt(row.Elevation), area: parseFloat(row.Area), 
                     lon: parseFloat(row.latlng.slice(1, -1).split(", ")[1]), lat: parseFloat(row.latlng.slice(1, -1).split(", ")[0]),l: row.max_length, w: row.max_width, dep: row.max_depth,
-                    volumn: row.water_volume, ph: row.pH, cond: row.Conductivity , temp: row.Temperature , o2: row.O2 };
+                    volumn: row.water_volume, ph: row.pH, cond: row.Conductivity , temp: row.Temperature , o2: row.O2, s16: row['16S'], s18: row['18S'] };
             lake_info.push(lake);
         });
 
@@ -537,7 +537,7 @@ function drawCantonLakesbyArea(cid, scale, g_coord){
         data.forEach((row) => {
             var lake = {lakeId: row.lake_id, name: row.Lake, link:row.link, canton: row.Canton, elevation: parseInt(row.Elevation), area: parseFloat(row.Area), 
                     lon: parseFloat(row.latlng.slice(1, -1).split(", ")[1]), lat: parseFloat(row.latlng.slice(1, -1).split(", ")[0]), l: row.max_length, w: row.max_width, dep: row.max_depth,
-                    volumn: row.water_volume, ph: row.pH, cond: row.Conductivity , temp: row.Temperature , o2: row.O2 };
+                    volumn: row.water_volume, ph: row.pH, cond: row.Conductivity , temp: row.Temperature , o2: row.O2, s16: row['16S'], s18: row['18S'] };
             lake_info.push(lake);
         });
 
@@ -594,6 +594,7 @@ function lakeInfo(d){
     lake_svg.selectAll("*").remove();
 
     var g = lake_svg.append("g");
+    //console.log(d.s16);
 
     d3.json("data/lakes/"+d.lakeId.toString()+".geojson").then((data) =>{
         //console.log(d.lakeId);
@@ -640,6 +641,12 @@ function lakeInfo(d){
     info_text_div.html("<h5>" + d.name + "  <a href="+d.link+" target=\"_blank\" title=\"to Wiki\"><img src=\"data/wiki.png\" height=\"20px\"></a></h5> ")
         .style('display', 'block');
 
+    //for microbio
+    var temp_s16_scale = d3.scaleLinear().domain([0, 9]).range([0, info_width*0.43]);
+    var pointer_s16_g = info_div.select("#s16_data").select(".pointer");
+    var temp_s18_scale = d3.scaleLinear().domain([0, 9]).range([0, info_width*0.43]);
+    var pointer_s18_g = info_div.select("#s18_data").select(".pointer");
+
     var temp_temp_scale = d3.scaleLinear().domain([0, 20]).range([0, info_width*0.43]);
     var pointer_temp_g = info_div.select("#temp_data").select(".pointer");
     var temp_do_scale = d3.scaleLinear().domain([0, 12]).range([0, info_width*0.43]);
@@ -650,6 +657,14 @@ function lakeInfo(d){
     var pointer_ph_g = info_div.select("#ph_data").select(".pointer");
     
     if(d.ph === ''){
+        //micro
+        pointer_s16_g.transition()
+            .duration(1000)
+            .attr("transform", "translate(0,0)");
+        pointer_s18_g.transition()
+            .duration(1000)
+            .attr("transform", "translate(0,0)");
+
         //deavtivate four measures
         pointer_temp_g.transition()
             .duration(1000)
@@ -665,6 +680,17 @@ function lakeInfo(d){
             .attr("transform", "translate(0,0)");
 
     }else{  
+        //microbio
+        pointer_s16_g.transition()
+            .duration(1000)
+            .attr("transform", "translate("+temp_s16_scale(parseInt(d.s16.split(", ")[0].length) - 1)+",0)");
+        pointer_s16_g.transition()
+            .duration(1000)
+            .attr("transform", "translate(0,0)");
+        pointer_s18_g.transition()
+            .duration(1000)
+            .attr("transform", "translate("+temp_s18_scale(parseInt(d.s18.split(", ")[0].length) - 1)+",0)");   
+        //
         pointer_temp_g.transition()
             .duration(1000)
             .attr("transform", "translate("+temp_temp_scale(parseFloat(d.temp.replace(',', '.')))+",0)");

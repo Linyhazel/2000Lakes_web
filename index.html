@@ -17,7 +17,7 @@
 	<link href="./lib/bootstrap/css/bootstrap.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400" rel="stylesheet">
 
-	<title>Swiss Mountain Lakes</title>
+	<title>Swiss Alpine Lakes</title>
 	<link rel="icon" href="data/Logo.png">
 
 	<link rel="stylesheet" href="style.css">
@@ -40,30 +40,49 @@
 				<input type="radio" name="radio-btn" onclick="changeRadioClass();" id="radio2" />
 				<input type="radio" name="radio-btn" onclick="changeRadioClass();" id="radio3" />
 				<input type="radio" name="radio-btn" onclick="changeRadioClass();" id="radio4" />
+				<input type="radio" name="radio-btn" onclick="changeRadioClass();" id="radio5" />
 
-				<div class="first slide" id="temperature-slide">
-					<h2><a class="source" href="https://www.enr.gov.nt.ca/sites/enr/files/water_temperature.pdf" target="_blank" title="source">#1 Temperature:</a></h2>
+				<div class="first slide" id="organisms-slide">
+					<h2><a class="source" href="https://www.enr.gov.nt.ca/sites/enr/files/water_temperature.pdf" target="_blank" title="source">Microbial abundance:</a></h2>
+					<p class="slide-content">
+						Microorganisms are both key primary producers and organic matter degraders in lakes and are important drivers of many element cycles including those of carbon and nitrogen. They have much shorter generation times and larger population sizes compared to multicellular organisms. <br/><br/>
+						The study of genetic responses to environmental change at the microbial level is therefore ideal because evolution may be observed on small time and spatial scales in contrast to larger macrobiota which are generally studied by conservation initiatives. Moreover, the specific genes responsible for an increased resistance to environmental stressors, such as UV radiation or temperature, may be of interest for the development of biotechnological applications. 
+					</p>
+					<p class="slide-content" style="margin-left: 50%">
+						Global change microbiology is a new and growing research field investigating the microbial responses to global warming, land overuse, pollution and on the effects on the Earth’s element cycles and ecosystems health. This novel research will provide knowledge needed to transition toward a sustainable society. <br/><br/>
+						On this website, the measured microbial abundance is shown as in the abundance of bacteria and archaea (16S), and the abundance of eukaryotic DNA (18S). The measured value is shown in order of magnitude, 10<sup>6</sup> for example, means the value is greater than one million.
+						<br/><br/>	
+						<img src="data/info.png" height="25px">
+						Click on the radio buttons to see other measured values.
+					</p>
+				</div>
+				<div class="slide" id="temperature-slide">
+					<h2><a class="source" href="https://www.enr.gov.nt.ca/sites/enr/files/water_temperature.pdf" target="_blank" title="source">Temperature:</a></h2>
 					<p class="slide-content">
 						Water takes a longer time to warm up or cool down compared to the air. When water cools down to 0°C, ice begins to form. Water at the bottom of a lake is typically 4°C if it is not frozen. <br/><br/> Water temperature is important because it determines where in the lake certain plants and animals can live. For example, some fish can only live in colder water and will therefore migrate during the summer period. Life stages of certain fish may require different temperatures. For example, Northern pike eggs will die if water temperature is higher than 19°C but adult fish will not die until water temperatures are above around 30°C. Some plants and animals will become dormant if water temperatures drop very low but will grow extremely quickly during the warmer waters of the summer.<br/><br/>
 					</p>
 					<p class="slide-content" style="margin-left: 50%">
 						Human activities can affect the water temperature directly. Quite often, water discharged from a sewage lagoon or from a tailings pond will be warmer than the water it is supposed to mix with in a lake. Climate change may also affect water temperature and therefore the ecosystem underwater. <br/><br/> 
-					<img src="data/info.png" height="25px">
-						Click the title to see the source, click the radio buttons to see more measured values.
+						<img src="data/info.png" height="25px">
+						Click on the title to see the source.
 					</p>
 				</div>
 				<div class="slide" id="DO-slide">
-					<h2><a class="source" href="https://www.enr.gov.nt.ca/sites/enr/files/dissolved_oxygen.pdf" target="_blank" title="source">#2 Dissolved oxygen:</a></h2>
+					<h2><a class="source" href="https://www.enr.gov.nt.ca/sites/enr/files/dissolved_oxygen.pdf" target="_blank" title="source">Dissolved oxygen:</a></h2>
 					<p class="slide-content">
 						Oxygen from the atmosphere dissolves in lake water and becomes the oxygen that fish and other aquatic creatures use to breathe.
-						It depends on whether water is flowing, whether there are obstacles for water to flow over, the amount of plants growing in the water, and the temperature of the water. There is more oxygen in cold, flowing water with many obstacles and a moderate
-						amount of plants.<br/><br/>
+						It depends on whether water is flowing, whether there are obstacles for water to flow over, the amount of plants growing in the water, and the temperature of the water. There is more oxygen in cold, flowing water with many obstacles and a moderate amount of plants.<br/><br/>
 						Fish and other animals that live in the water need oxygen to live and they require a different amount of dissolved oxygen. If oxygen levels are too low in the water, they may suffocate and die.<br/><br/>
-						Large-scale industrial development, heavy use of fertilizers and dumping of human waste can pollute water quickly and lead to oxygen starvation. In polluted systems, overgrowth of animals, plants and bacteria cause the oxygen to be used up quickly.
+						Large-scale industrial development, heavy use of fertilizers and dumping of human waste can pollute water quickly and lead to oxygen starvation. In polluted systems, overgrowth of animals, plants and bacteria cause the oxygen to be used up quickly.<br/><br/>
+						
+					</p>
+					<p class="slide-content" style="margin-left: 50%">
+						<img src="data/info.png" height="25px">
+						Click on the scale to interact.
 					</p>
 				</div>
 				<div class="slide" id="conductivity-slide">
-					<h2><a class="source" href="https://www.enr.gov.nt.ca/sites/enr/files/conductivity.pdf" target="_blank" title="source">#3 Conductivity:</a></h2>
+					<h2><a class="source" href="https://www.enr.gov.nt.ca/sites/enr/files/conductivity.pdf" target="_blank" title="source">Conductivity:</a></h2>
 					<p class="slide-content">
 						Conductivity of a lake measures how easily electricity is flowing through the water. It depends on the content of ionized chemicals like salts, dissolved in the water and the temperature of the water. The higher the content of dissolved ionized chemicals and the higher the temperature, the higher the conductivity. <br/><br/>
 						Conductivity can reflect the saltiness of the lake. Fish and other organisms that live in freshwater cannot tolerate high saltiness because they will not be able to keep water in their bodies.<br/><br/>
@@ -71,7 +90,7 @@
 					</p>
 				</div>
 				<div class="slide" id="pH-slide">
-					<h2><a class="source" href="https://www.enr.gov.nt.ca/sites/enr/files/ph.pdf" target="_blank" title="source">#4 pH:</a></h2>
+					<h2><a class="source" href="https://www.enr.gov.nt.ca/sites/enr/files/ph.pdf" target="_blank" title="source">pH value:</a></h2>
 					<p class="slide-content">
 						pH measures the acidity of a solution of water. It ranges from 0(strongly acidic) to 14(strongly basic). The middle is 7, indicating the pH is “neutral” (like in pure water).<br/><br/>
 						Most fish prefer to live in water that ranges in pH from around 6.4 to 8.4. Fish eggs grow and survive best at a narrower range of pH from 6.0 to 7.2.
@@ -85,6 +104,7 @@
 				<label for="radio2" class="navigation-btn"></label>
 				<label for="radio3" class="navigation-btn"></label>
 				<label for="radio4" class="navigation-btn"></label>
+				<label for="radio5" class="navigation-btn"></label>
 			</div>
 		</div>
 	</div>
@@ -116,11 +136,11 @@
 		</div>
 		<div id="lake_imgs"></div>
 		<div id="call_for_action">
-			Human activities will affect the mountain lake ecosystem directly or indirectly. It is never too late to take action to show you care!
+			Climate change is already leading to an increase of lake surface water temperatures, evaporation rates, and shortening of ice cover period. It is never too late to take action to show you care!
 			<br/>
 			You can also join our research by following our updates, helping with the sampling, creating wiki pages for the lakes without one and more... 
 			<br/><br/>
-			Check out this little <a href="#game" id="game_link">game</a> to see how well you know about swiss mountain lakes now! 
+			Check out this little <a href="#game" id="game_link">game</a> to see how well you know about Swiss Alpine lakes now! 
 		</div>
 		<div id="map_invisible" style="visibility: hidden"></div>
 	</div>

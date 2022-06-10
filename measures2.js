@@ -1,3 +1,23 @@
+var s16_data = [{"line":0.5, "orig": "black", "range": [0, 1], "color": "grey", "explain": " "},
+               {"line":0.2, "orig": "grey", "range": [1, 2], "color": "grey", "explain": " "},
+               {"line":0.5, "orig": "black", "range": [2, 3], "color": "grey", "explain": " "},
+               {"line":0.3, "orig": "grey", "range": [3, 4], "color": "grey", "explain": " "},
+               {"line":0.3, "orig": "grey", "range": [4, 5], "color": "grey", "explain": " "},
+               {"line":0.3, "orig": "grey", "range": [5, 6], "color": "grey", "explain": " "},
+               {"line":0.3, "orig": "grey", "range": [6, 7], "color": "grey", "explain": " "},
+               {"line":0.3, "orig": "grey", "range": [7, 8], "color": "grey", "explain": " "},
+               {"line":0.3, "orig": "grey", "range": [8, 9], "color": "grey", "explain": " "}];
+
+var s18_data = [{"line":0.5, "orig": "black", "range": [0, 1], "color": "grey", "explain": " "},
+               {"line":0.2, "orig": "grey", "range": [1, 2], "color": "grey", "explain": " "},
+               {"line":0.5, "orig": "black", "range": [2, 3], "color": "grey", "explain": " "},
+               {"line":0.3, "orig": "grey", "range": [3, 4], "color": "grey", "explain": " "},
+               {"line":0.3, "orig": "grey", "range": [4, 5], "color": "grey", "explain": " "},
+               {"line":0.3, "orig": "grey", "range": [5, 6], "color": "grey", "explain": " "},
+               {"line":0.3, "orig": "grey", "range": [6, 7], "color": "grey", "explain": " "},
+               {"line":0.3, "orig": "grey", "range": [7, 8], "color": "grey", "explain": " "},
+               {"line":0.3, "orig": "grey", "range": [8, 9], "color": "grey", "explain": " "}];
+
 var temp_data = [{"line":0.5, "orig": "black", "range": [0, 4], "color": "grey", "explain": " "},
                {"line":0.2, "orig": "grey", "range": [4, 8], "color": "grey", "explain": " "},
                {"line":0.5, "orig": "black", "range": [8, 12], "color": "grey", "explain": " "},
@@ -18,6 +38,8 @@ var ph_data = [{"line":0.5, "orig": "black", "range": [0, 4], "color": "#DA291C"
                {"line":0.4, "orig": "black", "range": [6.5, 8.5], "color": "#02C39A", "explain": "Best pH condition for all kinds of fish."},
                {"line":0.5, "orig": "grey", "range": [8.5, 11.5], "color": "lightyellow", "explain": "Create living pressure for some fish."},
                {"line":0.3, "orig": "black", "range": [11.5, 14], "color": "#DA291C", "explain": "All fish will be dead when the pH value is above 11.5."}];
+
+var superscript = "⁰¹²³⁴⁵⁶⁷⁸⁹";//"⁰","¹","²"."³","⁴","⁵","⁶","⁷","⁸","⁹"];
 
 // draw svg for do
 var temperature_div = d3.select("#temperature-slide");
@@ -124,44 +146,62 @@ function wrap(text, width) {
 
 function initLakeInfo(){
     lake_info_measure_svg.selectAll("*").remove();
-    lake_info_measure_svg.attr("transform", "translate(0,"+info_height*0.3+")").attr("width", info_width).attr("height", info_height*0.7);
+    lake_info_measure_svg.attr("transform", "translate(0,"+info_height*0.21+")").attr("width", info_width).attr("height", info_height*0.7);
     //temperature set to [0,20]
-    var arr = [temp_data, do_data, cond_data, ph_data];
+    var arr = [s16_data, s18_data, temp_data, do_data, cond_data, ph_data];
 
-    for (var i = 0; i < 4; i++){
+    for (var i = 0; i < 6; i++){
         g = lake_info_measure_svg.append("g");
         if(i == 0){
-            g.attr("id", "temp_data");
-            g.attr("transform", "translate("+(info_width*0.05)+",10)");
+            g.attr("id", "s16_data");
+            g.attr("transform", "translate("+info_width*0.05+",10)");
             g.append("text")
-                .attr("x", info_width*0.12)
+                .attr("x", info_width*0.02)
+                .attr("y", 40)
+                .text("Abundance of Bacteria and Archaea in Order of Magnitude (gc/L)")
+                .attr("font-size", "12px");
+        }
+        else if(i == 1){
+            g.attr("id", "s18_data");
+            g.attr("transform", "translate("+info_width*0.55+",10)");
+            g.append("text")
+                .attr("x", info_width*0.02)
+                .attr("y", 40)
+                .text("Abundance of Eukaryotic DNA in Order of Magnitude (gc/L)")
+                .attr("font-size", "12px");
+        }
+        else if(i == 2){
+            g.attr("id", "temp_data");
+            g.attr("transform", "translate("+(info_width*0.05)+","+(info_height*0.25+10)+")");
+            g.append("text")
+                .attr("x", info_width*0.15)
                 .attr("y", 40)
                 .text("Temperature (°C)")
                 .attr("font-size", "12px");
         }
-        else if(i == 1){
+        else if(i == 3){
             g.attr("id", "do_data");
-            g.attr("transform", "translate("+info_width*0.55+",10)");
+            g.attr("transform", "translate("+info_width*0.55+","+(info_height*0.25+10)+")");
             g.append("text")
-                .attr("x", info_width*0.12)
+                .attr("x", info_width*0.15)
                 .attr("y", 40)
                 .text("Dissolved Oxygen (mg/L)")
                 .attr("font-size", "12px");
         }
-        else if(i == 2){
+        else if(i == 4){
             g.attr("id", "cond_data");
-            g.attr("transform", "translate("+(info_width*0.05)+","+info_height*0.4+")");
+            g.attr("transform", "translate("+(info_width*0.05)+","+(info_height*0.5+10)+")");
             g.append("text")
-                .attr("x", info_width*0.12)
+                .attr("x", info_width*0.15)
                 .attr("y", 40)
                 .text("Conductivity (µS/cm)")
                 .attr("font-size", "12px");
         }
         else{
             g.attr("id", "ph_data");
-            g.attr("transform", "translate("+info_width*0.55+","+info_height*0.4+")");
+            g.attr("transform", "translate("+info_width*0.55+","+(info_height*0.5+10)+")");
             g.append("text")
-                .attr("x", info_width*0.12)
+                .attr("x", info_width*0.15)
                 .attr("y", 40)
                 .text("pH Value")
                 .attr("font-size", "12px");
@@ -185,14 +225,26 @@ function initLakeInfo(){
             .attr("stroke-width", "1.5px")
             .attr("transform", (d) => "translate("+scale(d.range[0])+",0)");
 
-        g.selectAll("xlabels")
-            .data(arr[i])
-            .enter()
-            .append("text")
-            .attr("x", (d)=>scale(d.range[1]))
-            .attr("y", 25)
-            .text((d)=>String(d.range[1]))
-            .attr("font-size", "12px");
+        if(i == 0 || i == 1){
+            g.selectAll("xlabels")
+                .data(arr[i])
+                .enter()
+                .append("text")
+                .attr("x", (d)=>scale(d.range[1]))
+                .attr("y", 25)
+                .text((d)=>"10"+superscript[d.range[1]])
+                .attr("font-size", "12px");
+        }
+        else{
+            g.selectAll("xlabels")
+                .data(arr[i])
+                .enter()
+                .append("text")
+                .attr("x", (d)=>scale(d.range[1]))
+                .attr("y", 25)
+                .text((d)=>String(d.range[1]))
+                .attr("font-size", "12px");
+        }
 
         // draw pointer
         var pointer_g = g.append("g").attr("class", "pointer")

@@ -111,14 +111,14 @@ body{
   position: absolute;
   height: 20%;
   width: 20%;
-  top: 30px;
+  top: 10%;
   /*background-color: powderblue;*/
 }
 
 #description{
   position: absolute;
   left: 20%;
-  height: 20%;
+  height: 35%;
   width: 80%;
   top: 30px;
   /*background-color: greenyellow;*/
@@ -139,7 +139,7 @@ body{
   width: 20%;
   text-align: center;
   padding: 3px 5px 3px 5px;
-  top: 30px;
+  padding-top: 50px;
   /*font: 1em sans-serif;*/
   /*background-color: #DA291C; /*#f7ebc3*/
 }
@@ -179,7 +179,7 @@ body{
 }
  
 .slides {
-  width: 400%;
+  width: 500%;
   height: 100%;
   display: flex;
 }
@@ -189,7 +189,7 @@ body{
 }
 
 .slide {
-  width: 25%;
+  width: 20%;
   transition: 2s;
   /*background-color: yellow;*/
 }
@@ -243,15 +243,19 @@ body{
 }
 
 #radio2:checked~.first {
-  margin-left: -25%;
+  margin-left: -20%;
 }
 
 #radio3:checked~.first {
-  margin-left: -50%;
+  margin-left: -40%;
 }
 
 #radio4:checked~.first {
-  margin-left: -75%;
+  margin-left: -60%;
+}
+
+#radio5:checked~.first {
+  margin-left: -80%;
 }
 
 .svgMap{
@@ -313,7 +317,7 @@ body{
 
 #lake_imgs{
   position: absolute;
-  top: 25%;
+  top: 37%;
   width: 100%;
   height: 30%;
   /*background-color: yellow;*/
@@ -324,9 +328,9 @@ body{
 #call_for_action{
   position: absolute;
   /*top: 52%;*/
-  bottom: 50px;
-  left: 25%;
-  width: 50%;
+  bottom: 20px;
+  left: 20%;
+  width: 60%;
   height: auto;
   /*background-color: #90E0EF;*/
   padding: 10px;

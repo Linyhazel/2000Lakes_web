@@ -250,7 +250,7 @@ function renderQ(noQ, selected_lake_id, total_lake_data){
         renderOps(question, ops, total_lake_data, total_lake_data[selected_lake_id].name); 
     }
     else if(noQ == 0){
-        question.innerText = "This lake in my mind is located in canton";
+        question.innerText = "This lake in my mind is located in Canton";
         
         ops.push([total_lake_data[selected_lake_id].canton, "correct"]);
         while(ops.length < 3){
