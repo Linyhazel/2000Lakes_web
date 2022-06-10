@@ -684,9 +684,6 @@ function lakeInfo(d){
         pointer_s16_g.transition()
             .duration(1000)
             .attr("transform", "translate("+temp_s16_scale(parseInt(d.s16.split(", ")[0].length) - 1)+",0)");
-        pointer_s16_g.transition()
-            .duration(1000)
-            .attr("transform", "translate(0,0)");
         pointer_s18_g.transition()
             .duration(1000)
             .attr("transform", "translate("+temp_s18_scale(parseInt(d.s18.split(", ")[0].length) - 1)+",0)");   
