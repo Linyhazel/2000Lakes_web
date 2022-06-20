@@ -267,8 +267,8 @@ function renderQ(noQ, selected_lake_id, total_lake_data){
 
         //generate options
         if(question_ids[noQ] == 0){//elevation
-            var r11 = parseInt(total_lake_data[selected_lake_id].elevation/100)*100 - 50,
-                r12 = parseInt(total_lake_data[selected_lake_id].elevation/100)*100 + 50;
+            var r11 = parseInt(total_lake_data[selected_lake_id].elevation/100)*100;// - 50,
+                r12 = parseInt(total_lake_data[selected_lake_id].elevation/100)*100 + 100;
             console.log(r11, r12);
             ops.push([r11+" to "+r12,"correct"]);
             correct_ans = "The elevation of this lake is in the range <span class='cr'>"+r11+" meters to "+r12+"</span>.";
@@ -276,15 +276,15 @@ function renderQ(noQ, selected_lake_id, total_lake_data){
             for (let i = 0; i < ran.length; i++){
                 if(ran[i] == 0){
                     var r1 = Math.floor(Math.random() * (r11 - 850 + 1)) + 800;
-                    var r21 = parseInt(r1/100)*100 - 50,
-                        r22 = parseInt(r1/100)*100 + 50;
+                    var r21 = parseInt(r1/100)*100;// - 50,
+                        r22 = parseInt(r1/100)*100 + 100;
 
                     ops.push([r21+" to "+r22,"wrong"]);
                 }
                 else if(ran[i] == 1){
                     var r1 = Math.floor(Math.random() * (3000 - r12 + 1)) + r12 + 50;
-                    var r21 = parseInt(r1/100)*100 - 50,
-                        r22 = parseInt(r1/100)*100 + 50;
+                    var r21 = parseInt(r1/100)*100;// - 50,
+                        r22 = parseInt(r1/100)*100 + 100;
 
                     ops.push([r21+" to "+r22,"wrong"]);
                 }
