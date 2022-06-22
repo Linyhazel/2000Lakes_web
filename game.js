@@ -9,7 +9,7 @@ const questions = [{"attribute": "elevation", "question": "The elevation of this
                      {"attribute": "l", "question": "The max length of this lake is"},
                      {"attribute": "w", "question": "The max width of this lake is"},
                      {"attribute": "dep", "question": "The max depth of this lake is"},
-                     {"attribute": "volumn", "question": "The water volumn of this lake is"}];
+                     {"attribute": "volumn", "question": "The water volume of this lake is"}];
 
 const cantons = ["Valais", "Graubünden", "Ticino", "St. Gallen", "Glarus", "Bern", "Uri", "Obwalden", "Schwyz", "Vaud", "Nidwalden", "Appenzell Innerrhoden",
                  "Neuchâtel", "Fribourg", "Jura", "Zug", "Zürich", "Solothurn", "Appenzell Ausserrhoden", " Basel-Stadt", "Basel-Landschaft",
