@@ -325,6 +325,13 @@ body{
   overflow-x: auto;
 }
 
+#gglogo{
+  position: absolute;
+  top: 67%;
+  float: right;
+  height: 3%;
+}
+
 #call_for_action{
   position: absolute;
   /*top: 52%;*/
