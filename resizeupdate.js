@@ -19,5 +19,5 @@ d3.select(window).on("resize", function(){
 
     info_width = info_div.node().getBoundingClientRect().width;
     info_height = info_div.node().getBoundingClientRect().height;
-    updateMeasures();
+    initLakeInfo();
 });
