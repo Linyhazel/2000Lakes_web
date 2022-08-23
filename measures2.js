@@ -97,7 +97,7 @@ function drawMeasure(measure_svg, data, title){
                         .attr("dy",0)
                         .attr("transform", "translate("+(measure_scale(d.range[0])+10)+",0)")
                         .text(d.explain)
-                        .attr("font-size", "15px")
+                        .attr("font-size", "1vw")
                         .attr("fill","#011A38")
                         .call(wrap,(measure_scale(d.range[1]-d.range[0])));
                 });
@@ -159,7 +159,7 @@ function initLakeInfo(){
                 .attr("x", info_width*0.02)
                 .attr("y", 40)
                 .text("Abundance of Bacteria and Archaea in Order of Magnitude (gc/L)")
-                .attr("font-size", "12px");
+                .attr("font-size", "1vw");
         }
         else if(i == 1){
             g.attr("id", "s18_data");
@@ -168,43 +168,43 @@ function initLakeInfo(){
                 .attr("x", info_width*0.02)
                 .attr("y", 40)
                 .text("Abundance of Eukaryotic DNA in Order of Magnitude (gc/L)")
-                .attr("font-size", "12px");
+                .attr("font-size", "1vw");
         }
         else if(i == 2){
             g.attr("id", "temp_data");
-            g.attr("transform", "translate("+(info_width*0.05)+","+(info_height*0.25+10)+")");
+            g.attr("transform", "translate("+(info_width*0.05)+","+(info_height*0.22+10)+")");
             g.append("text")
                 .attr("x", info_width*0.15)
                 .attr("y", 40)
                 .text("Temperature (°C)")
-                .attr("font-size", "12px");
+                .attr("font-size", "1vw");
         }
         else if(i == 3){
             g.attr("id", "do_data");
-            g.attr("transform", "translate("+info_width*0.55+","+(info_height*0.25+10)+")");
+            g.attr("transform", "translate("+info_width*0.55+","+(info_height*0.22+10)+")");
             g.append("text")
                 .attr("x", info_width*0.15)
                 .attr("y", 40)
                 .text("Dissolved Oxygen (mg/L)")
-                .attr("font-size", "12px");
+                .attr("font-size", "1vw");
         }
         else if(i == 4){
             g.attr("id", "cond_data");
-            g.attr("transform", "translate("+(info_width*0.05)+","+(info_height*0.5+10)+")");
+            g.attr("transform", "translate("+(info_width*0.05)+","+(info_height*0.45+10)+")");
             g.append("text")
                 .attr("x", info_width*0.15)
                 .attr("y", 40)
                 .text("Conductivity (µS/cm)")
-                .attr("font-size", "12px");
+                .attr("font-size", "1vw");
         }
         else{
             g.attr("id", "ph_data");
-            g.attr("transform", "translate("+info_width*0.55+","+(info_height*0.5+10)+")");
+            g.attr("transform", "translate("+info_width*0.55+","+(info_height*0.45+10)+")");
             g.append("text")
                 .attr("x", info_width*0.15)
                 .attr("y", 40)
                 .text("pH Value")
-                .attr("font-size", "12px");
+                .attr("font-size", "1vw");
         }
         
         var scale = d3.scaleLinear().domain([arr[i][0].range[0], arr[i][arr[i].length-1].range[1]]).range([0, info_width*0.43]);
@@ -213,7 +213,7 @@ function initLakeInfo(){
             .attr("x", 0)
             .attr("y", 25)
             .text("0")
-            .attr("font-size", "12px");
+            .attr("font-size", "1vw");
 
         g.selectAll("rect")
             .data(arr[i])
@@ -233,7 +233,7 @@ function initLakeInfo(){
                 .attr("x", (d)=>scale(d.range[1]))
                 .attr("y", 25)
                 .text((d)=>"10"+superscript[d.range[1]])
-                .attr("font-size", "12px");
+                .attr("font-size", "1vw");
         }
         else{
             g.selectAll("xlabels")
@@ -243,7 +243,7 @@ function initLakeInfo(){
                 .attr("x", (d)=>scale(d.range[1]))
                 .attr("y", 25)
                 .text((d)=>String(d.range[1]))
-                .attr("font-size", "12px");
+                .attr("font-size", "1vw");
         }
 
         // draw pointer
@@ -264,3 +264,5 @@ function initLakeInfo(){
 }
 
 initLakeInfo();
+
+

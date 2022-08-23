@@ -3,6 +3,10 @@ html{
   scroll-behavior: smooth;
 }
 
+strong { 
+  color: #02C39A;
+}
+
 body{
 
 	width: 100vw;
@@ -21,7 +25,7 @@ body{
 	/* default text */
 	font-family: 'Montserrat', sans-serif;
   font-weight: 400;
-	font-size: 1.1rem;
+	font-size: 1.1vw;
   color: #011A38;
 }
 
@@ -36,10 +40,24 @@ body{
   overflow: scroll;
   scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
+
 }
 
 .container::-webkit-scrollbar {
-    display: none;
+  /*display: none;*/
+  width: 0.7vw;
+
+}
+
+/* Track */
+.container::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+.container::-webkit-scrollbar-thumb {
+  background: #90E0EF; 
+  border-radius: 50px;
 }
 
 .svg-container{
@@ -96,7 +114,7 @@ body{
 .tooltip{
   position: absolute;
   text-align: center;
-  color: white;
+  color: #011A38;
   /*top: 20%; /* match with the map!!*/
   width: auto;
   height: auto;
@@ -104,7 +122,7 @@ body{
   /*font: 1em sans-serif;*/
   border: 0px;
   border-radius: 5px;
-  background-color: #DA291C; /*#f7ebc3*/
+  background-color: #02C39A; /*#f7ebc3*/
 }
 
 #lake_geojson{
@@ -199,7 +217,7 @@ body{
   width: 40%;
   margin-top: 20px;
   margin-left: 8%;
-  font-size: 17px;
+  font-size: 1.2vw;
   /*background-color: lightpink;*/
 }
 

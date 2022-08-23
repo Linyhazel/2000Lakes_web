@@ -10,14 +10,14 @@ d3.select(window).on("resize", function(){
 
     drawMap();
 
-    //measure_width = do_div.node().getBoundingClientRect().width;
-    //measure_height = do_div.node().getBoundingClientRect().height;
+    measure_width = do_div.node().getBoundingClientRect().width;
+    measure_height = do_div.node().getBoundingClientRect().height;
     //console.log(measure_width);
-    //drawMeasure(do_svg, do_data, "Dissolved Oxygen (mg/L)");
-    //drawMeasure(cond_svg, cond_data, "Conductivity (µS/cm)");
-    //drawMeasure(ph_svg, ph_data, "pH Value");
+    drawMeasure(do_svg, do_data, "Dissolved Oxygen (mg/L)");
+    drawMeasure(cond_svg, cond_data, "Conductivity (µS/cm)");
+    drawMeasure(ph_svg, ph_data, "pH Value");
 
     info_width = info_div.node().getBoundingClientRect().width;
     info_height = info_div.node().getBoundingClientRect().height;
-    initLakeInfo();
+    updateMeasures();
 });

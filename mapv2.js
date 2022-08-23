@@ -5,8 +5,8 @@ var map_invisible = new google.maps.Map(document.getElementById("map_invisible")
         center: {lat: 46.8, lng: 8.2}, // center of switzerland lat: 46.8, lng: 8.2
     });
 
-var color_sampled = "#DA291C",
-    color_not_sampled = "#90E0EF";
+var color_sampled = "#9bf80c"//"#DA291C",
+    color_not_sampled = "#0c9bf8"//"#90E0EF";
 // zoom in: either change viewbox of the svg canvas or transform the grouped svg
 // viewbox is not used here for svg! otherwise it's too messy! use only the transform method
 var map_div = d3.select("#map"),
@@ -155,7 +155,7 @@ function renderWithGoogle(cantonId_to_density, canton_data, lake_info, map_data,
                         }
                     })
                     .attr("opacity", 0.6)
-                    .attr("r", 5)
+                    .attr("r", 5.5)
                     .attr("transform", (d) => "translate(" + googleMapProjection([d.lon,d.lat]) + ")")
                     .on("mouseover", function(d){
                         d3.select(this).style("cursor", "pointer");
@@ -171,7 +171,7 @@ function renderWithGoogle(cantonId_to_density, canton_data, lake_info, map_data,
                         map_tip.style('display', 'none').style('opacity', 0);
                     })
                     .on("click", function(d){
-                        d3.select(this).attr("fill","yellow");
+                        //d3.select(this).attr("fill","yellow");
                         lakeInfo(d);
                     });
             } 
@@ -212,7 +212,7 @@ function renderWithGoogle(cantonId_to_density, canton_data, lake_info, map_data,
                         map_tip.style('display', 'none').style('opacity', 0);
                     })
                     .on("click", function(d){
-                        d3.select(this).attr("fill","yellow");
+                        //d3.select(this).attr("fill","yellow");
                         lakeInfo(d);
                     });
             }
@@ -255,7 +255,7 @@ function renderWithGoogle(cantonId_to_density, canton_data, lake_info, map_data,
                         map_tip.style('display', 'none').style('opacity', 0);
                     })
                     .on("click", function(d){
-                        d3.select(this).attr("fill","yellow");
+                        //d3.select(this).attr("fill","yellow");
                         lakeInfo(d);
                     });
             }
@@ -333,7 +333,7 @@ function renderOnlySVG(cantonId_to_density, map_data, op){
         g_coord = map_svg.append("g");
 
     const densities = Object.values(cantonId_to_density);
-    var color_scale = d3.scaleLinear().domain([d3.min(densities), d3.max(densities)]).range(["white", "#011A38"]);
+    var color_scale = d3.scaleLinear().domain([d3.min(densities), d3.max(densities)]).range(["white", "black"]);
 
     // set the viewbox to be the swissmap so that the map will be fill up the page
     var swiss_bounds  = path_swiss.bounds(map_data),
@@ -353,7 +353,7 @@ function renderOnlySVG(cantonId_to_density, map_data, op){
         .data(map_data.features)
         .enter().append("path")
         .attr("d", path_swiss)
-        .attr("stroke",d3.rgb('#011A38'))
+        .attr("stroke",d3.rgb('black'))
         .attr("stroke-width",1)
         .attr("fill",(d) => color_scale(cantonId_to_density[d.id]))
         .on("mouseover",function(d,i){
@@ -453,7 +453,7 @@ function drawCantonLakes(cid, scale, g_coord){
                 }
             })
             .attr("opacity", 0.6)
-            .attr("r", 6/scale)
+            .attr("r", 7/scale)
             .attr("transform", (d) => "translate(" + projection_swiss([d.lon,d.lat]) + ")")
             .on("mouseover", function(d){
                 d3.select(this).style("cursor", "pointer");
@@ -469,7 +469,7 @@ function drawCantonLakes(cid, scale, g_coord){
                 map_tip.style('display', 'none').style('opacity', 0);
             })
             .on("click", function(d){
-                d3.select(this).attr("fill","yellow");
+                //d3.select(this).attr("fill","yellow");
                 lakeInfo(d);
             });
 
@@ -498,7 +498,7 @@ function drawCantonLakesbyElevation(cid, scale, g_coord){
             .data(lake_info)
             .enter()
             .append('polyline')
-            .attr('points', (d) => "0,0 1,"+(-elevation_scale(d.elevation))+" 2,0")///////////
+            .attr('points', (d) => "0,0 1.5,"+(-elevation_scale(d.elevation))+" 3,0")///////////
             .attr("fill", function(d){
                 if(d.ph === ''){
                     return color_not_sampled;
@@ -523,7 +523,7 @@ function drawCantonLakesbyElevation(cid, scale, g_coord){
                 map_tip.style('display', 'none').style('opacity', 0);
             })
             .on("click", function(d){
-                d3.select(this).attr("fill","yellow");
+                //d3.select(this).attr("fill","yellow");
                 lakeInfo(d);
             });
 
@@ -578,7 +578,7 @@ function drawCantonLakesbyArea(cid, scale, g_coord){
                 map_tip.style('display', 'none').style('opacity', 0);
             })
             .on("click", function(d){
-                d3.select(this).attr("fill","yellow");
+                //d3.select(this).attr("fill","yellow");
                 lakeInfo(d);
             });
 
@@ -631,7 +631,7 @@ function lakeInfo(d){
         d.volumn = "NA";
     }
 
-    lake_data_div.html("<b style=\"font-size:bold;\">Max length: </b>" + d.l + "</br> <b>Max width: </b>" + d.w + " </br> <b>Max depth: </b>" + d.dep + "</br><b>Water volume: </b>" + d.volumn + "</br>" )
+    lake_data_div.html("<b style=\"font-size:1.1vw;\">Max length: " + d.l + "</b></br> <b style=\"font-size:1.1vw;\">Max width: " + d.w + "</b> </br> <b style=\"font-size:1.1vw;\">Max depth: " + d.dep + "</b></br><b style=\"font-size:1.1vw;\">Water volume: " + d.volumn + "</b></br>" )
         .style('display', 'block')
         .style('opacity', 2);
 
