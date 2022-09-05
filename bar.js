@@ -22,14 +22,14 @@ function drawBar(){
 
         bar_g.append('rect')
             .attr("width", len_scale(total_lakes[0]))
-            .attr("height", 30)
+            .attr("height", bar_height*0.3)
             .attr("rx", 4)
             .attr("fill",  "#90E0EF")
             .attr("transform", "translate(0,"+(bar_height-30)+")");
 
         bar_g.append('rect')
             .attr("width", 0)
-            .attr("height", 30)
+            .attr("height", bar_height*0.3)
             .attr("rx", 4)
             .attr("fill",  "#02C39A")
             .attr("transform", "translate(0,"+(bar_height-30)+")")
@@ -43,11 +43,12 @@ function drawBar(){
 
 function showText(total, sampled, horizontal_position){
     var text_div = d3.select("#intro");
-    var text = sampled.toString() + " lakes out of " + total.toString() + " have been sampled by now."
+    var text = sampled.toString() + " lakes out of " + total.toString() + " have been sampled by now.";
     text_div.html(text)
             .style('display', 'block')
-            .style("top", "135px")
+            .style("top", (bar_height*0.15)+"%")
             .style("left", (horizontal_position)+'px')
+            .style("font-size", "1vw")
             .style('opacity', 1);
 }
 

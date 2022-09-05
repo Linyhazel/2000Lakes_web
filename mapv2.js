@@ -591,7 +591,7 @@ function lakeInfo(d){
         wiki_l = d.link;
     }
     newWindow.document.write("<div id=\"text_descrition\">"+d.name+" <a href=\""+wiki_l+"\" target=\"_blank\" title=\"to Wiki\"><img src=\"data/wiki.png\" height=\"20px\"></a></div>");
-
+    newWindow.document.write("<iframe style=\"width:100%; height: 100px; position: absolute; bottom: 0px; border:none;\" src=\"/footer.html\"></iframe>")
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     var newWindowRoot = d3.select(newWindow.document.body);
