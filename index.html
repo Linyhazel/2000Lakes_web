@@ -110,26 +110,27 @@
 	</div>
 
 	<div class="svg-container">
-		<div style="height: 100%; width: 30%">
+		<!-- <div style="height: 100%; width: 30px; background-color: #90E0EF">
 			<div></div>
+		</div> -->
+
+		<div>
+			<select id="vizop" onchange="drawMap(this)">
+				<option value="byCoord" selected="selected">Lakes by coordinates</option>
+				<option value="byElevation">Lakes by elevation</option>
+				<option value="byArea">Lakes by surface area</option>
+			</select>
+
+			<div id="checkbox_google" onchange="drawMap(this)" style="background-color: #E4F8FB; font-size: 15px;">
+				<label for="googleCheck" style="font-size:1.1vw;">Google Maps:</label> 
+				<input type="checkbox" id="googleCheck">
+				<div style="font-size:1.1vw;"><div class='box' style="background-color: #9bf80c;"></div>Sampled Lakes</div>
+				<div style="font-size:1.1vw;"><div class='box' style="background-color: #0c9bf8;"></div>Not Sampled Lakes</div>
+			</div>
+
+			<div id="map"></div>
+			<div id="map-tooltip" class="tooltip"></div>
 		</div>
-
-		<select id="vizop" onchange="drawMap(this)">
-			<option value="byCoord" selected="selected">Lakes by coordinates</option>
-			<option value="byElevation">Lakes by elevation</option>
-			<option value="byArea">Lakes by surface area</option>
-		</select>
-
-		<div id="checkbox_google" onchange="drawMap(this)" style="background-color: #E4F8FB; font-size: 15px;">
-			<label for="googleCheck" style="font-size:1.1vw;">Google Maps:</label> 
-			<input type="checkbox" id="googleCheck">
-			<div style="font-size:1.1vw;"><div class='box' style="background-color: #9bf80c;"></div>Sampled Lakes</div>
-			<div style="font-size:1.1vw;"><div class='box' style="background-color: #0c9bf8;"></div>Not Sampled Lakes</div>
-		</div>
-
-
-		<div id="map"></div>
-		<div id="map-tooltip" class="tooltip"></div>
 	</div>
 	<div id="map_invisible" style="visibility: hidden"></div>
 
