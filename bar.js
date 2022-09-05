@@ -27,13 +27,6 @@ function drawBar(){
             .attr("fill",  "#90E0EF")
             .attr("transform", "translate(0,"+(bar_height-30)+")");
 
-        //bar_g.append("text")
-          //  .attr("x", len_scale(total_lakes[0]/2-10))
-            //.attr("y", 15)
-            //.attr("dy", ".35em")
-            //.attr("opacity", 0.6)
-            //.text(total_lakes[0].toString()+" lakes");
-
         bar_g.append('rect')
             .attr("width", 0)
             .attr("height", 30)

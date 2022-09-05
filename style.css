@@ -36,26 +36,27 @@ body{
   width: 100%;
 }
 
-.container{
+.container-fluid{
+  width: 100%;
   overflow-y: scroll;
   scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
 
 }
 
-.container::-webkit-scrollbar {
+.container-fluid::-webkit-scrollbar {
   /*display: none;*/
   width: 0.7vw;
 
 }
 
 /* Track */
-.container::-webkit-scrollbar-track {
+.container-fluid::-webkit-scrollbar-track {
   background: #f1f1f1; 
 }
  
 /* Handle */
-.container::-webkit-scrollbar-thumb {
+.container-fluid::-webkit-scrollbar-thumb {
   background: #90E0EF; 
   border-radius: 50px;
 }
@@ -129,31 +130,36 @@ body{
   position: absolute;
   height: 20%;
   width: 20%;
-  top: 10%;
+  top: 15%;
+  left: 7%;
   /*background-color: powderblue;*/
 }
 
 #description{
   position: absolute;
-  left: 20%;
-  height: 35%;
-  width: 80%;
-  top: 30px;
+  right: 7%;
+  /*height: 35%;
+  width: 80%;*/
+  top: 15%;
   /*background-color: greenyellow;*/
 }
 
 #text_descrition{
   position: absolute;
-  height: 20%;
+  /*height: 20%;*/
   width: 100%;
-  top: 10px;
+  top: 7%;
   /*background-color: yellow;*/
   text-align: center;
+  font-size:2vw; 
+  width: 100%;
 }
 
 #lake_data{
+  font-size: 1.1vw;
   position: absolute;
-  height: 20%;
+  top: 15%;
+  left: 7%;
   width: 20%;
   text-align: center;
   padding: 3px 5px 3px 5px;
@@ -309,11 +315,6 @@ body{
   fill-opacity: 0.01;
 }
 
-#lake_data{
-  font-size: 15px;
-  top: 50px;
-}
-
 .box {
   float: left;
   top: 5px;
@@ -335,7 +336,7 @@ body{
 
 #lake_imgs{
   position: absolute;
-  top: 37%;
+  bottom: 25%;
   width: 100%;
   height: 30%;
   /*background-color: yellow;*/
@@ -345,8 +346,8 @@ body{
 
 #gglogo{
   position: absolute;
-  top: 67%;
-  float: right;
+  bottom: 21%;
+  left: 10px;
   height: 3%;
 }
 

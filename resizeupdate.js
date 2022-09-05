@@ -17,7 +17,7 @@ d3.select(window).on("resize", function(){
     drawMeasure(cond_svg, cond_data, "Conductivity (µS/cm)");
     drawMeasure(ph_svg, ph_data, "pH Value");
 
-    info_width = info_div.node().getBoundingClientRect().width;
-    info_height = info_div.node().getBoundingClientRect().height;
-    initLakeInfo();
+    // info_width = info_div.node().getBoundingClientRect().width;
+    // info_height = info_div.node().getBoundingClientRect().height;
+    // initLakeInfo();
 });
