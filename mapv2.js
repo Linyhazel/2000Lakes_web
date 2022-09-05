@@ -136,7 +136,7 @@ function renderWithGoogle(cantonId_to_density, canton_data, lake_info, map_data,
             g.selectAll('a').remove();
 
             if(op == "byCoord"){
-                g.append("a").attr("href", "#lake_info")
+                g.append("a")
                     .selectAll("circle")
                     .data(lake_info)
                     .enter() // different object rendered for diff render option op == 'byCoord' / op == 'byElevation'
@@ -177,7 +177,6 @@ function renderWithGoogle(cantonId_to_density, canton_data, lake_info, map_data,
                 var elevation_scale = d3.scaleLinear().domain([d3.min(eleva), d3.max(eleva)]).range([6, 100]);
 
                 g.append("a")
-                    .attr("href", "#lake_info")
                     .selectAll(".point")
                     .data(lake_info)
                     .enter()
@@ -220,7 +219,6 @@ function renderWithGoogle(cantonId_to_density, canton_data, lake_info, map_data,
                 var area_scale = d3.scaleLinear().domain([d3.min(areas), d3.max(areas)]).range([6, 150]);
 
                 g.append("a")
-                    .attr("href", "#lake_info")
                     .selectAll(".point")
                     .data(lake_info)
                     .enter()
@@ -591,27 +589,72 @@ function lakeInfo(d){
         wiki_l = d.link;
     }
     newWindow.document.write("<div id=\"text_descrition\">"+d.name+" <a href=\""+wiki_l+"\" target=\"_blank\" title=\"to Wiki\"><img src=\"data/wiki.png\" height=\"20px\"></a></div>");
-    newWindow.document.write("<iframe style=\"width:100%; height: 100px; position: absolute; bottom: 0px; border:none;\" src=\"/footer.html\"></iframe>")
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     var newWindowRoot = d3.select(newWindow.document.body);
 
-    let info_div = newWindowRoot.append('div').attr('id','description');
-    var info_width = map_width*0.8,
-        info_height = map_height*0.4;
-    let lake_info_measure_svg = info_div.append('svg');  
+    let row = newWindowRoot.append('div').attr('id','lake_row');
 
-    lake_info_measure_svg.attr("width", info_width).attr("height", info_height*0.8);
+    let lake_geo_bound_div = row.append('div').attr('id','geo_and_stat')
+    let lake_svg = lake_geo_bound_div.append('svg').attr('id','lake_geojson');  
+    var width = map_width*0.25,
+        height = map_height*0.15;
+    var lake_svg_g = lake_svg.append("g");
+    d3.json("data/lakes/"+d.lakeId.toString()+".geojson").then((data) =>{
+        var lake_bounds  = path_swiss.bounds(data),
+            lake_dx = lake_bounds[1][0] - lake_bounds[0][0],
+            lake_dy = lake_bounds[1][1] - lake_bounds[0][1],
+            lake_x = (lake_bounds[0][0] + lake_bounds[1][0]) / 2,
+            lake_y = (lake_bounds[0][1] + lake_bounds[1][1]) / 2,
+                        
+            lake_scale = .95 / Math.max(lake_dx / width, lake_dy / height),
+            lake_translate = [width / 2 - lake_scale * lake_x, height / 2 - lake_scale * lake_y];
+
+        lake_svg_g.attr("transform", "translate(" + lake_translate + ")scale(" + lake_scale + ")");
+        lake_svg_g.selectAll("path")
+            .data(data.features)
+            .enter().append("path")
+            .attr("d", path_swiss)
+            .attr("stroke",d3.rgb('#90E0EF'))
+            .attr("fill", "#90E0EF")
+            .attr("stroke-width",2/lake_scale);
+    });
+
+    if(d.l == ""){
+        d.l = "NA";
+    }
+    if(d.w == ""){
+        d.w = "NA";
+    }
+    if(d.dep == ""){
+        d.dep = "NA";
+    }
+    if(d.volumn == ""){
+        d.volumn = "NA";
+    }
+    let lake_data = lake_geo_bound_div.append('div').attr('id','lake_data'); 
+    lake_data.html("<b style=\"font-size:1.1vw;\">Max length: </b>" + d.l + "</br> <b style=\"font-size:1.1vw;\">Max width: </b>" + d.w + " </br> <b style=\"font-size:1.1vw;\">Max depth: </b>" + d.dep + "</br><b style=\"font-size:1.1vw;\">Water volume: </b>" + d.volumn + "</br>" )
+        .style('display', 'block')
+        .style('opacity', 2);
+    
+
+    //draw 6 measures together with pointers
+    let lake_info_measure_svg = row.append('svg').attr('id','lake_measures');
+    var info_width = map_width*0.7,
+        info_height = map_height*0.4;
+    //let lake_info_measure_svg = info_div.append('svg');  
+
+    lake_info_measure_svg.attr("width", info_width).attr("height", info_height);
     //temperature set to [0,20]
     var arr = [s16_data, s18_data, temp_data, do_data, cond_data, ph_data];
 
     for (var i = 0; i < 6; i++){
-        g = lake_info_measure_svg.append("g");
+        let g = lake_info_measure_svg.append("g");
         var scale = d3.scaleLinear().domain([arr[i][0].range[0], arr[i][arr[i].length-1].range[1]]).range([0, info_width*0.43]);
         
         if(i == 0){
             g.attr("id", "s16_data");
-            g.attr("transform", "translate("+info_width*0.05+",10)");
+            g.attr("transform", "translate("+info_width*0.05+",50)");
             g.append("text")
                 .attr("x", info_width*0.02)
                 .attr("y", 40)
@@ -620,7 +663,7 @@ function lakeInfo(d){
         }
         else if(i == 1){
             g.attr("id", "s18_data");
-            g.attr("transform", "translate("+info_width*0.55+",10)");
+            g.attr("transform", "translate("+info_width*0.55+",50)");
             g.append("text")
                 .attr("x", info_width*0.02)
                 .attr("y", 40)
@@ -629,7 +672,7 @@ function lakeInfo(d){
         }
         else if(i == 2){
             g.attr("id", "temp_data");
-            g.attr("transform", "translate("+(info_width*0.05)+","+(info_height*0.22+10)+")");
+            g.attr("transform", "translate("+(info_width*0.05)+","+(info_height*0.22+50)+")");
             g.append("text")
                 .attr("x", info_width*0.15)
                 .attr("y", 40)
@@ -638,7 +681,7 @@ function lakeInfo(d){
         }
         else if(i == 3){
             g.attr("id", "do_data");
-            g.attr("transform", "translate("+info_width*0.55+","+(info_height*0.22+10)+")");
+            g.attr("transform", "translate("+info_width*0.55+","+(info_height*0.22+50)+")");
             g.append("text")
                 .attr("x", info_width*0.15)
                 .attr("y", 40)
@@ -647,7 +690,7 @@ function lakeInfo(d){
         }
         else if(i == 4){
             g.attr("id", "cond_data");
-            g.attr("transform", "translate("+(info_width*0.05)+","+(info_height*0.45+10)+")");
+            g.attr("transform", "translate("+(info_width*0.05)+","+(info_height*0.45+50)+")");
             g.append("text")
                 .attr("x", info_width*0.15)
                 .attr("y", 40)
@@ -656,14 +699,13 @@ function lakeInfo(d){
         }
         else{
             g.attr("id", "ph_data");
-            g.attr("transform", "translate("+info_width*0.55+","+(info_height*0.45+10)+")");
+            g.attr("transform", "translate("+info_width*0.55+","+(info_height*0.45+50)+")");
             g.append("text")
                 .attr("x", info_width*0.15)
                 .attr("y", 40)
                 .text("pH Value")
                 .attr("font-size", "1vw");
-        }
-    
+        }   
 
         g.append("text")
             .attr("x", 0)
@@ -739,49 +781,6 @@ function lakeInfo(d){
             .attr("fill","#011A38");
     }
 
-
-    let lake_svg = newWindowRoot.append('svg').attr('id','lake_geojson');  
-    var width = map_width*0.2,
-        height = map_height*0.2;
-    var g = lake_svg.append("g");
-    d3.json("data/lakes/"+d.lakeId.toString()+".geojson").then((data) =>{
-        var lake_bounds  = path_swiss.bounds(data),
-            lake_dx = lake_bounds[1][0] - lake_bounds[0][0],
-            lake_dy = lake_bounds[1][1] - lake_bounds[0][1],
-            lake_x = (lake_bounds[0][0] + lake_bounds[1][0]) / 2,
-            lake_y = (lake_bounds[0][1] + lake_bounds[1][1]) / 2,
-                        
-            lake_scale = .95 / Math.max(lake_dx / width, lake_dy / height),
-            lake_translate = [width / 2 - lake_scale * lake_x, height / 2 - lake_scale * lake_y];
-
-        g.attr("transform", "translate(" + lake_translate + ")scale(" + lake_scale + ")");
-        g.selectAll("path")
-            .data(data.features)
-            .enter().append("path")
-            .attr("d", path_swiss)
-            .attr("stroke",d3.rgb('#90E0EF'))
-            .attr("fill", "#90E0EF")
-            .attr("stroke-width",2/lake_scale);
-    });
-
-    if(d.l == ""){
-        d.l = "NA";
-    }
-    if(d.w == ""){
-        d.w = "NA";
-    }
-    if(d.dep == ""){
-        d.dep = "NA";
-    }
-    if(d.volumn == ""){
-        d.volumn = "NA";
-    }
-    let lake_data = newWindowRoot.append('div').attr('id','lake_data'); 
-    lake_data.html("<b style=\"font-size:1.1vw;\">Max length: </b>" + d.l + "</br> <b style=\"font-size:1.1vw;\">Max width: </b>" + d.w + " </br> <b style=\"font-size:1.1vw;\">Max depth: </b>" + d.dep + "</br><b style=\"font-size:1.1vw;\">Water volume: </b>" + d.volumn + "</br>" )
-        .style('display', 'block')
-        .style('opacity', 2);
-    
-
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //get lake imgs from google api
     //var url = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input="+d.name+"&inputtype=textquery&fields=place_id&key=AIzaSyC9WNb8WzI-qcbOO_dP7soqYsXgEXeFcpY"
@@ -804,6 +803,8 @@ function lakeInfo(d){
             });
         }
     });
+
+    newWindow.document.write("<iframe style=\"width:100%; height: 100px; position: absolute; bottom: 0px; border:none;\" src=\"./footer.html\"></iframe>")
     
 
     function createPhoto(place) {
