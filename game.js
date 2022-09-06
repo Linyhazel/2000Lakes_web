@@ -452,6 +452,8 @@ game_btn.addEventListener('click', () => {
         game_group_div.style.left = 0;
         map_group_div.style.width = "68%";
 
+        map_width = map_width*0.68;
+
         // if the game start for the first time, load instructions
         if(!game_started){
             game_started = true;
@@ -465,10 +467,10 @@ game_btn.addEventListener('click', () => {
         game_btn_img.style.transform = 'scaleX(1)';
         game_group_div.style.left = '-31%';
         map_group_div.style.width = "99%";
+
+        map_width = map_width/0.69;
     }
-    map_width = map_div.node().getBoundingClientRect().width;
-    map_height = map_div.node().getBoundingClientRect().height;
-    console.log(map_width, map_height);
+   
     drawMap();
 
 }, false);
