@@ -295,70 +295,34 @@ body{
 }
 
 /*-----------------------------------------------for map section------------------------------------------*/
+#section2{
+  display: flex;
+  position: relative;
+}
 
-#map{
+/*------------------for game--------------------*/
+#game_group{
   position: absolute;
-  top: 0;
-  left: 0;
+  height: 100%;
+  width: 32%;
+  left: -31%;
+  transition: 2s;
+}
+
+#game{
+  position: absolute;
+  background-color: #90E0EF; 
   height: 100%;
   width: 100%;
 }
-
-.svgMap{
-  position: relative;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  /*background-color: lightpink;*/
-}
-
-.SvgOverlay {
-  position: relative;
-  width: 500px;
-  height: 500px;   
-  /*background-color: lightseagreen;*/    
-}
-
-.SvgOverlay svg {
-  position: absolute;
-  top: -1000px;
-  left: -1000px; 
-  width: 2000px;
-  height: 2000px;
-  /*background-color: lightseagreen;
-  opacity: 0.3;*/
-}
-
-.SvgOverlay path {
-  stroke: #011A38;
-  stroke-width: 2px;
-  fill: white;
-  fill-opacity: 0.01;
-}
-
-.box {
-  float: left;
-  top: 5px;
-  height: 15px;
-  width: 15px;
-  margin-right: 5px;
-  clear: both;
-}
-
-.source{
-  text-decoration: none;
-  color: #011A38;
-}
-
-/*-----------------------------------------------for the game------------------------------------------*/
 
 #chatBox{
   position: absolute;
   top: 10%;
-  left: 35%;
+  left: 5%;
   height: 80%;
-  width: 30%;
+  width: 90%;
+  max-width: 350px;
   padding: 10px;
   /*text-align: center;*/
   background-color: #E4F8FB;
@@ -438,3 +402,88 @@ body{
 .cr{
   background-color: #02C39A;
 }
+
+#game_btn{
+  height: 50px; 
+  width: 40px; 
+  background-color: #90E0EF; 
+  position: absolute; 
+  border-radius: 45%; 
+  left: calc(100% - 20px); 
+  top: 50%;
+  cursor: pointer;  
+  z-index: 1000;
+}
+
+#game_icon{
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 5px;
+  transition: 1s;
+}
+
+/*------------------for map---------------------*/
+#map_group{
+  position: absolute;
+  width: 99%;
+  height: 100%;
+  right: 0;
+  transition: 2s;
+}
+
+#map{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.svgMap{
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  /*background-color: lightpink;*/
+}
+
+.SvgOverlay {
+  position: relative;
+  width: 500px;
+  height: 500px;   
+  /*background-color: lightseagreen;*/    
+}
+
+.SvgOverlay svg {
+  position: absolute;
+  top: -1000px;
+  left: -1000px; 
+  width: 2000px;
+  height: 2000px;
+  /*background-color: lightseagreen;
+  opacity: 0.3;*/
+}
+
+.SvgOverlay path {
+  stroke: #011A38;
+  stroke-width: 2px;
+  fill: white;
+  fill-opacity: 0.01;
+}
+
+.box {
+  float: left;
+  top: 5px;
+  height: 15px;
+  width: 15px;
+  margin-right: 5px;
+  clear: both;
+}
+
+.source{
+  text-decoration: none;
+  color: #011A38;
+}
+

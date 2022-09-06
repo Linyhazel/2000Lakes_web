@@ -436,16 +436,39 @@ function renderOps(question, op_list, total_lake_data, correct_answer){
 }
 
 const gameContainer = document.querySelector('#game');
-const pageEle = document.getElementById("page");
+const game_btn = document.getElementById("game_btn");
+const game_btn_img = document.getElementById("game_icon");
+const game_group_div = document.getElementById("game_group");
+const map_group_div = document.getElementById("map_group");
 var game_started = false;
+var game_opened = false; // if the game part is opened by the user
 
-pageEle.addEventListener('scroll', () => {
-    var scrolled = pageEle.scrollTop;
-    var gamePosition = gameContainer.offsetTop;
+game_btn.addEventListener('click', () => {
+    if(!game_opened){
+        // open the game and flip the button image
+        game_opened = true;
+        game_btn_img.style.transform = 'scaleX(-1)';
+        // set the style here so the size change
+        game_group_div.style.left = 0;
+        map_group_div.style.width = "68%";
 
-    if(scrolled == gamePosition && game_started == false){
-        game_started = true;
-        startDialogue();
-        console.log("start dialogue!");
+        // if the game start for the first time, load instructions
+        if(!game_started){
+            game_started = true;
+            startDialogue();
+            console.log("start dialogue!");
+        }
     }
-}, false)
+    else{
+        // close the game and flip the button image
+        game_opened = false;
+        game_btn_img.style.transform = 'scaleX(1)';
+        game_group_div.style.left = '-31%';
+        map_group_div.style.width = "99%";
+    }
+    map_width = map_div.node().getBoundingClientRect().width;
+    map_height = map_div.node().getBoundingClientRect().height;
+    console.log(map_width, map_height);
+    drawMap();
+
+}, false);

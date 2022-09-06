@@ -579,6 +579,10 @@ function drawCantonLakesbyArea(cid, scale, g_coord){
     });
 }
 
+const section2_div = d3.select("#section2");
+var section_width = section2_div.node().getBoundingClientRect().width;
+    section_height = section2_div.node().getBoundingClientRect().height;
+
 function lakeInfo(d){
     var newWindow = window.open('lake_page.html','_blank');
     newWindow.document.write("<link rel=\"stylesheet\" href=\"style.css\">");
@@ -597,8 +601,8 @@ function lakeInfo(d){
 
     let lake_geo_bound_div = row.append('div').attr('id','geo_and_stat')
     let lake_svg = lake_geo_bound_div.append('svg').attr('id','lake_geojson');  
-    var width = map_width*0.25,
-        height = map_height*0.15;
+    var width = section_width*0.25,
+        height = section_height*0.15;
     var lake_svg_g = lake_svg.append("g");
     d3.json("data/lakes/"+d.lakeId.toString()+".geojson").then((data) =>{
         var lake_bounds  = path_swiss.bounds(data),
@@ -640,8 +644,8 @@ function lakeInfo(d){
 
     //draw 6 measures together with pointers
     let lake_info_measure_svg = row.append('svg').attr('id','lake_measures');
-    var info_width = map_width*0.7,
-        info_height = map_height*0.4;
+    var info_width = section_width*0.7,
+        info_height = section_height*0.4;
     //let lake_info_measure_svg = info_div.append('svg');  
 
     lake_info_measure_svg.attr("width", info_width).attr("height", info_height);
@@ -656,18 +660,18 @@ function lakeInfo(d){
             g.attr("id", "s16_data");
             g.attr("transform", "translate("+info_width*0.05+",50)");
             g.append("text")
-                .attr("x", info_width*0.02)
+                .attr("x", info_width*0.04)
                 .attr("y", 40)
-                .text("Abundance of Bacteria and Archaea in Order of Magnitude (gc/L)")
+                .text("Abundance of Bacteria and Archaea (gc/L)")
                 .attr("font-size", "1vw");
         }
         else if(i == 1){
             g.attr("id", "s18_data");
-            g.attr("transform", "translate("+info_width*0.55+",50)");
+            g.attr("transform", "translate("+info_width*0.53+",50)");
             g.append("text")
-                .attr("x", info_width*0.02)
+                .attr("x", info_width*0.04)
                 .attr("y", 40)
-                .text("Abundance of Eukaryotic DNA in Order of Magnitude (gc/L)")
+                .text("Abundance of Eukaryotic DNA (gc/L)")
                 .attr("font-size", "1vw");
         }
         else if(i == 2){
@@ -681,7 +685,7 @@ function lakeInfo(d){
         }
         else if(i == 3){
             g.attr("id", "do_data");
-            g.attr("transform", "translate("+info_width*0.55+","+(info_height*0.22+50)+")");
+            g.attr("transform", "translate("+info_width*0.53+","+(info_height*0.22+50)+")");
             g.append("text")
                 .attr("x", info_width*0.15)
                 .attr("y", 40)
@@ -699,7 +703,7 @@ function lakeInfo(d){
         }
         else{
             g.attr("id", "ph_data");
-            g.attr("transform", "translate("+info_width*0.55+","+(info_height*0.45+50)+")");
+            g.attr("transform", "translate("+info_width*0.53+","+(info_height*0.45+50)+")");
             g.append("text")
                 .attr("x", info_width*0.15)
                 .attr("y", 40)

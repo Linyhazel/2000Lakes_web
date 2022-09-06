@@ -109,12 +109,25 @@
 		</div>
 	</div>
 
-	<div class="svg-container">
-		<!-- <div style="height: 100%; width: 30px; background-color: #90E0EF">
-			<div></div>
-		</div> -->
+	<div class="svg-container" id="section2">
+		<div id="game_group">
+			<div id="game">
+				<div id="chatBox">
+					<div id="dialogue"> 
+						<!-- <div class="botMsg" style="animation-delay: 1s;">Hello there! Are you interested in playing a game?</div>
+						<div class="botMsg" style="animation-delay: 3s;">
+							It's called Five-Question Game. I have a lake in mind, you need to guess which lake it is by asking at most 5 yes/no questions. I will only reply
+							yes or no to your question and ignore other questions. You win the game if you can guess which lake it is in the end ;)
+						</div>
+						<div class="botMsg" style="animation-delay: 9s;">Let's get started!</div>
+						<div class="userMsg" style="animation-delay: 10s;">sure!</div> -->
+					</div>
+				</div>
+			</div>
+			<div id="game_btn"><img id="game_icon" src="./data/game_btn.png"></div>
+		</div>
 
-		<div>
+		<div id="map_group">
 			<select id="vizop" onchange="drawMap(this)">
 				<option value="byCoord" selected="selected">Lakes by coordinates</option>
 				<option value="byElevation">Lakes by elevation</option>
@@ -134,18 +147,7 @@
 	</div>
 	<div id="map_invisible" style="visibility: hidden"></div>
 
-	<div id="game" class="svg-container">
-		<div id="chatBox">
-			<div id="dialogue"> 
-				<!-- <div class="botMsg" style="animation-delay: 1s;">Hello there! Are you interested in playing a game?</div>
-				<div class="botMsg" style="animation-delay: 3s;">
-					It's called Five-Question Game. I have a lake in mind, you need to guess which lake it is by asking at most 5 yes/no questions. I will only reply
-					yes or no to your question and ignore other questions. You win the game if you can guess which lake it is in the end ;)
-				</div>
-				<div class="botMsg" style="animation-delay: 9s;">Let's get started!</div>
-				<div class="userMsg" style="animation-delay: 10s;">sure!</div> -->
-			</div>
-		</div>
+	<div id="section3" class="svg-container">
 		<iframe style="width:100%; height: 100px; border:none; position: absolute; bottom: 0px;" src="./footer.html"></iframe>
 	</div>
 	<!-- <iframe style="width:100%; border:none; position: absolute; bottom: 0px;" src="/footer.html"></iframe> -->

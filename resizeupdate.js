@@ -20,4 +20,6 @@ d3.select(window).on("resize", function(){
     // info_width = info_div.node().getBoundingClientRect().width;
     // info_height = info_div.node().getBoundingClientRect().height;
     // initLakeInfo();
+    section_width = section2_div.node().getBoundingClientRect().width;
+    section_height = section2_div.node().getBoundingClientRect().height;
 });
