@@ -7,6 +7,11 @@ strong {
   color: #02C39A;
 }
 
+a{
+  text-decoration: none;
+  color: #011A38;
+}
+
 body{
 
 	width: 100vw;
@@ -306,7 +311,7 @@ body{
   height: 100%;
   width: 32%;
   left: -31%;
-  transition: 2s;
+  transition: 1s;
 }
 
 #game{
@@ -410,7 +415,7 @@ body{
   position: absolute; 
   border-radius: 45%; 
   left: calc(100% - 20px); 
-  top: 50%;
+  top: 48%;
   cursor: pointer;  
   z-index: 1000;
 }
@@ -429,7 +434,7 @@ body{
   width: 99%;
   height: 100%;
   right: 0;
-  transition: 2s;
+  transition: 1s;
 }
 
 #map{
@@ -451,8 +456,8 @@ body{
 
 .SvgOverlay {
   position: relative;
-  width: 500px;
-  height: 500px;   
+  width: 100%;
+  height: 100%;   
   /*background-color: lightseagreen;*/    
 }
 
@@ -487,3 +492,67 @@ body{
   color: #011A38;
 }
 
+/*------------------for gashapon*/
+
+#gashapon {
+  position: absolute;
+  left: 20%;
+  top: 5%;
+  width: 60%;
+  aspect-ratio: 2 / 1.5;
+}
+
+#handler{
+  cursor: pointer;
+}
+
+#cap{
+  z-index: 999;
+}
+
+.lakeBall{
+  cursor: pointer;
+}
+
+#gashapon_lake {
+  position: absolute;
+  width: 20%;
+  aspect-ratio: 1 / 1.4;
+  /*background-color: lightgrey;*/
+  left: 55%;
+  top: 10%;
+}
+
+.gashapon_content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /*font-size: 13px;*/
+  border-radius: 15px 15px 15px 15px;
+  padding: 10px;
+  background-color: #90E0EF;
+  /*opacity: 0.5;*/
+  text-align: center;
+
+  transform-origin: 50% 50%; /*define the origin of the transform*/
+  transform: scale(0); /*originally not shown!*/
+  animation: lakeinfo 0.15s ease-out 0s forwards; /*define the animation!*/
+}
+
+@keyframes lakeinfo {
+  0% {
+    max-height: 100vmax;
+  }
+  80% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    max-height: 100vmax;  
+  }
+}
+
+.gashapon_title {
+  cursor: pointer;
+  font-size: 1.5vw;
+}

@@ -22,4 +22,8 @@ d3.select(window).on("resize", function(){
     // initLakeInfo();
     section_width = section2_div.node().getBoundingClientRect().width;
     section_height = section2_div.node().getBoundingClientRect().height;
+
+    gashapon_width = gashapon_svg.node().getBoundingClientRect().width*0.5;
+    gashapon_height = gashapon_svg.node().getBoundingClientRect().height;
+    draw_machine();
 });

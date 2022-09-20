@@ -61,6 +61,7 @@ const map_promise = d3.json("data/cantons.geojson").then((data) => data);
 var projection_swiss = d3.geoMercator().scale(9000).center([8.9, 46.8]);
 var path_swiss = d3.geoPath().projection(projection_swiss);
 
+var lake_info;
 function drawMap(){
     var vizop = document.getElementById("vizop");
     var op = vizop.value;
@@ -74,7 +75,7 @@ function drawMap(){
     Promise.all([density_promise, canton_promise, lake_promise, map_promise]).then((results) => {
         let cantonId_to_density = results[0];
         let canton_data = results[1];
-        let lake_info = results[2];
+        lake_info = results[2];
         let map_data = results[3];
 
         if(ifgoogle.checked){
