@@ -43,6 +43,7 @@ function openBall(lake_ind){
 				    	.text("Click the lake name to see more detailed information. Would you like to help create or enrich its Wikipedia page with the information provided?")
 		    	});
     	});
+    d3.select(".lakeBall").on('click',null);
 }
 
 function draw_machine(){

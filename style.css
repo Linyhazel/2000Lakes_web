@@ -229,7 +229,7 @@ body{
 .slide {
   width: 20%;
   transition: 2s;
-  overflow: scroll;
+  /*overflow: scroll;*/
   /*background-color: yellow;*/
 }
 
@@ -239,7 +239,7 @@ body{
   margin-top: 20px;
   margin-left: 8%;
   font-size: 1.2vw;
-  overflow: scroll;
+  /*overflow: scroll;*/
   /*background-color: lightpink;*/
 }
 
@@ -534,7 +534,7 @@ body{
   /*opacity: 0.5;*/
   text-align: center;
 
-  transform-origin: 50% 50%; /*define the origin of the transform*/
+  transform-origin: 50% 100%; /*define the origin of the transform*/
   transform: scale(0); /*originally not shown!*/
   animation: lakeinfo 0.15s ease-out 0s forwards; /*define the animation!*/
 }
