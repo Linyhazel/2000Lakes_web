@@ -342,7 +342,7 @@ body{
   top: 10px;
   height: 95%;
   /*background-color: lightcoral;*/
-  overflow-x: none;
+  overflow-x: hidden;
   overflow-y: auto;
 }
 
