@@ -34,7 +34,7 @@ function startDialogue(){
         var bubble1 = document.createElement("div");
         bubble1.setAttribute("class", "botMsg");
         bubble1.innerText = "Hello there! Are you interested in playing a game?";
-        bubble1.style.animationDelay = "0s";
+        bubble1.style.animationDelay = "1.1s";
         dialogue_div.appendChild(bubble1);
         dialogue_div.scrollTop = dialogue_div.scrollHeight;
 
@@ -66,7 +66,7 @@ function startDialogue(){
         choice_no.onclick = function() {respond(this, total_lake_data)};
         bubble3.appendChild(choice_no);
 
-        bubble3.style.animationDelay = "8s";
+        bubble3.style.animationDelay = "6s";
         dialogue_div.appendChild(bubble3);
         dialogue_div.scrollTop = dialogue_div.scrollHeight;
     });
@@ -123,7 +123,6 @@ function shuffle(array) {
 }
 
 function respond(ele, total_lake_data, correct_answer = ""){
-    //console.log(total_lake_data);
     ele.style.backgroundColor = "#90E0EF";
     disabledAllButtons();
 
@@ -146,14 +145,12 @@ function respond(ele, total_lake_data, correct_answer = ""){
 
         //select target lake
         selected_lake_id = Math.floor(Math.random() * total_num);
-        console.log("Select lake with id ", selected_lake_id);
 
         // draw questions
         while(question_ids.length < 5){
             var r = Math.floor(Math.random() * 11);
             if(question_ids.indexOf(r) === -1) question_ids.push(r);
         }
-        console.log(question_ids);
 
         renderQ(current_q, selected_lake_id, total_lake_data);
     }
@@ -245,8 +242,6 @@ function renderQ(noQ, selected_lake_id, total_lake_data){
         //[["name", "correct"],["name", "wrong"],["name", "wrong"]]
         ops = [[total_lake_data[selected_lake_id].name, "correct"], [total_lake_data[random_ids[0]].name, "wrong"], [total_lake_data[random_ids[1]].name, "wrong"]]
         shuffle(ops);
-        console.log(ops);
-
         renderOps(question, ops, total_lake_data, total_lake_data[selected_lake_id].name); 
     }
     else if(noQ == 0){
@@ -258,7 +253,6 @@ function renderQ(noQ, selected_lake_id, total_lake_data){
             if(cantons[r] != total_lake_data[selected_lake_id].canton && ops.indexOf([cantons[r], "wrong"]) === -1) ops.push([cantons[r], "wrong"]);
         }
         shuffle(ops);
-        console.log(ops);
         renderOps(question, ops, total_lake_data, "This lake is located in <span class='cr'>"+total_lake_data[selected_lake_id].canton+"</span>."); 
     }
     else{
@@ -269,7 +263,6 @@ function renderQ(noQ, selected_lake_id, total_lake_data){
         if(question_ids[noQ] == 0){//elevation
             var r11 = parseInt(total_lake_data[selected_lake_id].elevation/100)*100;// - 50,
                 r12 = parseInt(total_lake_data[selected_lake_id].elevation/100)*100 + 100;
-            console.log(r11, r12);
             ops.push([r11+" to "+r12,"correct"]);
             correct_ans = "The elevation of this lake is in the range <span class='cr'>"+r11+" meters to "+r12+"</span>.";
             var ran = [Math.floor(Math.random()*2), Math.floor(Math.random()*2)], r21, r22, r31, r32; //[0,0]: both smaller than correct answer, 1: larger
@@ -293,6 +286,7 @@ function renderQ(noQ, selected_lake_id, total_lake_data){
         else if(question_ids[noQ] == 1){// area
             var a = total_lake_data[selected_lake_id].area;
             ops = [["unknown", "wrong"], ["< 100 hectares", "wrong"], [">= 100 hectares", "wrong"]];
+            console.log(a);
             if(a == ""){
                 ops[0][1] = "correct";
                 correct_ans = "The surface area is <span class='cr'>unknown</span>.";
@@ -414,7 +408,6 @@ function renderQ(noQ, selected_lake_id, total_lake_data){
         }
 
         shuffle(ops);
-        console.log(ops);
         renderOps(question, ops, total_lake_data, correct_ans);        
     }
 
@@ -458,7 +451,6 @@ game_btn.addEventListener('click', () => {
         if(!game_started){
             game_started = true;
             startDialogue();
-            console.log("start dialogue!");
         }
     }
     else{
