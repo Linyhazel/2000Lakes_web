@@ -262,7 +262,6 @@ function renderWithGoogle(cantonId_to_density, canton_data, lake_info, map_data,
                 .enter().append("svg:path")
                 .attr("d", ongooglepath)
                 .on("mouseover",function(d,i){
-                    console.log(d3.event);
                     map_tip.style('top', (d3.event.clientY) + 'px')
                         .style('left', (d3.event.clientX) + 'px');
                     map_tip.html("<b>Canton: </b>" + d.properties.name + "</br> <b>Number of recorded lakes: </b>" + cantonId_to_density[d.id])
