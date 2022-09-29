@@ -161,8 +161,8 @@ function renderWithGoogle(cantonId_to_density, canton_data, lake_info, map_data,
                             .style('opacity', 2);
                     })
                     .on("mousemove", function(d){
-                        map_tip.style('top', (d3.event.layerY-580) + 'px')
-                            .style('left', (d3.event.layerX-340) + 'px');
+                        map_tip.style('top', (d3.event.clientY) + 'px')
+                            .style('left', (d3.event.clientX) + 'px');
                     })
                     .on("mouseout", function(d){
                         map_tip.style('display', 'none').style('opacity', 0);
@@ -201,8 +201,8 @@ function renderWithGoogle(cantonId_to_density, canton_data, lake_info, map_data,
                             .style('opacity', 2);
                     })
                     .on("mousemove", function(d){
-                        map_tip.style('top', (d3.event.layerY-580) + 'px')
-                            .style('left', (d3.event.layerX-340) + 'px');
+                        map_tip.style('top', (d3.event.clientY) + 'px')
+                            .style('left', (d3.event.clientX) + 'px');
                     })
                     .on("mouseout", function(d){
                         map_tip.style('display', 'none').style('opacity', 0);
@@ -243,8 +243,8 @@ function renderWithGoogle(cantonId_to_density, canton_data, lake_info, map_data,
                             .style('opacity', 2);
                     })
                     .on("mousemove", function(d){
-                        map_tip.style('top', (d3.event.layerY-580) + 'px')
-                            .style('left', (d3.event.layerX-340) + 'px');
+                        map_tip.style('top', (d3.event.clientY) + 'px')
+                            .style('left', (d3.event.clientX) + 'px');
                     })
                     .on("mouseout", function(d){
                         map_tip.style('display', 'none').style('opacity', 0);
@@ -262,8 +262,9 @@ function renderWithGoogle(cantonId_to_density, canton_data, lake_info, map_data,
                 .enter().append("svg:path")
                 .attr("d", ongooglepath)
                 .on("mouseover",function(d,i){
-                    map_tip.style('top', (d3.event.layerY-580) + 'px')
-                        .style('left', (d3.event.layerX-340) + 'px');
+                    console.log(d3.event);
+                    map_tip.style('top', (d3.event.clientY) + 'px')
+                        .style('left', (d3.event.clientX) + 'px');
                     map_tip.html("<b>Canton: </b>" + d.properties.name + "</br> <b>Number of recorded lakes: </b>" + cantonId_to_density[d.id])
                         .style('display', 'block')
                         .style('opacity', 2);
@@ -274,8 +275,8 @@ function renderWithGoogle(cantonId_to_density, canton_data, lake_info, map_data,
                     }
                 })
                 .on("mousemove", function (d) {
-                    map_tip.style('top', (d3.event.layerY-580) + 'px')
-                        .style('left', (d3.event.layerX-340) + 'px');
+                    map_tip.style('top', (d3.event.clientY) + 'px')
+                        .style('left', (d3.event.clientX) + 'px');
                 })
                 .on("mouseout",function(d,i){
                     map_tip.style('display', 'none').style('opacity', 0);
@@ -353,8 +354,8 @@ function renderOnlySVG(cantonId_to_density, map_data, op){
         .attr("fill",(d) => color_scale(cantonId_to_density[d.id]))
         .on("mouseover",function(d,i){
             //d3.select(this).attr("stroke-width",2);
-            map_tip.style('top', (d3.event.layerY+5) + 'px')
-                .style('left', (d3.event.layerX+5) + 'px');
+            map_tip.style('top', (d3.event.clientY) + 'px')
+                .style('left', (d3.event.clientX) + 'px');
             map_tip.html("<b>Canton: </b>" + d.properties.name + "</br> <b>Number of recorded lakes: </b>" + cantonId_to_density[d.id])
                 .style('display', 'block')
                 .style('opacity', 2);
@@ -365,8 +366,8 @@ function renderOnlySVG(cantonId_to_density, map_data, op){
             }
         })
         .on("mousemove", function (d) {
-            map_tip.style('top', (d3.event.layerY+5) + 'px')
-                .style('left', (d3.event.layerX+5) + 'px');
+            map_tip.style('top', (d3.event.clientY) + 'px')
+                .style('left', (d3.event.clientX) + 'px');
         })
         .on("mouseout",function(d,i){
             d3.select(this).attr("stroke-width",1);
@@ -435,7 +436,6 @@ function drawCantonLakes(cid, scale, g_coord){
 
         g_coord
             .append("a")
-            //.attr("href", "#lake_info")
             .selectAll(".point")
             .data(lake_info)
             .enter()
@@ -457,8 +457,8 @@ function drawCantonLakes(cid, scale, g_coord){
                     .style('opacity', 2);
             })
             .on("mousemove", function(d){
-                map_tip.style('top', (d3.event.layerY+5) + 'px')
-                    .style('left', (d3.event.layerX+5) + 'px');
+                map_tip.style('top', (d3.event.clientY) + 'px')
+                    .style('left', (d3.event.clientX) + 'px');
             })
             .on("mouseout", function(d){
                 map_tip.style('display', 'none').style('opacity', 0);
@@ -488,7 +488,6 @@ function drawCantonLakesbyElevation(cid, scale, g_coord){
 
         g_coord
             .append("a")
-            .attr("href", "#lake_info")
             .selectAll(".point")
             .data(lake_info)
             .enter()
@@ -511,8 +510,8 @@ function drawCantonLakesbyElevation(cid, scale, g_coord){
                     .style('opacity', 2);
             })
             .on("mousemove", function(d){
-                map_tip.style('top', (d3.event.layerY+5) + 'px')
-                    .style('left', (d3.event.layerX+5) + 'px');
+                map_tip.style('top', (d3.event.clientY) + 'px')
+                    .style('left', (d3.event.clientX) + 'px');
             })
             .on("mouseout", function(d){
                 map_tip.style('display', 'none').style('opacity', 0);
@@ -544,7 +543,6 @@ function drawCantonLakesbyArea(cid, scale, g_coord){
 
         g_coord
             .append("a")
-            .attr("href", "#lake_info")
             .selectAll(".point")
             .data(lake_info)
             .enter()
@@ -566,8 +564,8 @@ function drawCantonLakesbyArea(cid, scale, g_coord){
                     .style('opacity', 2);
             })
             .on("mousemove", function(d){
-                map_tip.style('top', (d3.event.layerY+5) + 'px')
-                    .style('left', (d3.event.layerX+5) + 'px');
+                map_tip.style('top', (d3.event.clientY) + 'px')
+                    .style('left', (d3.event.clientX) + 'px');
             })
             .on("mouseout", function(d){
                 map_tip.style('display', 'none').style('opacity', 0);
