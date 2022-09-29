@@ -30,7 +30,7 @@ body{
 	/* default text */
 	font-family: 'Montserrat', sans-serif;
   font-weight: 400;
-	font-size: 1.1vw;
+	font-size: 1.1vw;/* 2vmin;*/
   color: #011A38;
 }
 
@@ -134,7 +134,7 @@ body{
   width: 100%;
   top: 7%;
   text-align: center;
-  font-size:2vw; 
+  font-size:3vmin; 
   width: 100%;
 }
 
@@ -148,7 +148,7 @@ body{
 }
 
 #lake_data{
-  font-size: 1.1vw;
+  font-size: 2vmin;
   position: absolute;
   top: 25%;
   left: 7%;
@@ -238,7 +238,7 @@ body{
   width: 40%;
   margin-top: 20px;
   margin-left: 8%;
-  font-size: 1.2vw;
+  font-size: 2vmin;
   /*overflow: scroll;*/
   /*background-color: lightpink;*/
 }
@@ -498,7 +498,8 @@ body{
   position: absolute;
   left: 20%;
   top: 5%;
-  width: 60%;
+  max-width: 60%;
+  max-height: 80%;
   aspect-ratio: 2 / 1.5;
 }
 
@@ -554,5 +555,6 @@ body{
 
 .gashapon_title {
   cursor: pointer;
-  font-size: 1.5vw;
+  font-size: 2.7vmin;
+  font-weight: bold;
 }

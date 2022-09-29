@@ -97,7 +97,7 @@ function drawMeasure(measure_svg, data, title){
                         .attr("dy",0)
                         .attr("transform", "translate("+(measure_scale(d.range[0])+10)+",0)")
                         .text(d.explain)
-                        .attr("font-size", "1vw")
+                        .attr("font-size", "1.6vmin")
                         .attr("fill","#011A38")
                         .call(wrap,(measure_scale(d.range[1]-d.range[0])));
                 });

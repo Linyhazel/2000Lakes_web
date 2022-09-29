@@ -48,7 +48,7 @@ function showText(total, sampled, horizontal_position){
             .style('display', 'block')
             .style("top", (bar_height*0.15)+"%")
             .style("left", (horizontal_position)+'px')
-            .style("font-size", "1vw")
+            .style("font-size", "2vmin")
             .style('opacity', 1);
 }
 

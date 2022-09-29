@@ -18,7 +18,7 @@ function openBall(lake_ind){
 		    	.attr("transform", "translate("+gashapon_width*0.44+","+gashapon_height*0.83+")rotate(-170)")
 		    	.on('end', function() {
 		    		// add div to the document.
-				    console.log(lake_info[lake_ind]);
+				    //console.log(lake_info[lake_ind]);
 				    var lake_obj = lake_info[lake_ind];
 				    lake_div.selectAll('*').remove();
 				    var gashapon_content = lake_div.append("div").attr("class","gashapon_content");
@@ -275,7 +275,7 @@ function draw_machine(){
             .attr("transform", "translate("+(gashapon_width*0.2)+","+(gashapon_height*0.04)+")");
     gashapon_g.append('text')
             .text("Lake Gashapon")
-            .attr("font-size", "1.5vw")
+            .attr("font-size", "2.5vmin")
             .attr("fill","#011A38")
             .attr("transform", "translate("+(gashapon_width*0.25)+","+(gashapon_height*0.1)+")");
 
