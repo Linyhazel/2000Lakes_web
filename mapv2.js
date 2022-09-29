@@ -599,8 +599,8 @@ function lakeInfo(d){
 
     let lake_geo_bound_div = row.append('div').attr('id','geo_and_stat')
     let lake_svg = lake_geo_bound_div.append('svg').attr('id','lake_geojson');  
-    var width = section_width*0.25,
-        height = section_height*0.15;
+    var width = section_width*0.3,
+        height = section_height*0.25;
     var lake_svg_g = lake_svg.append("g");
     d3.json("data/lakes/"+d.lakeId.toString()+".geojson").then((data) =>{
         var lake_bounds  = path_swiss.bounds(data),
@@ -636,14 +636,13 @@ function lakeInfo(d){
     }
     let lake_data = lake_geo_bound_div.append('div').attr('id','lake_data'); 
     lake_data.html("<b style=\"font-size:1.1vw;\">Max length: </b>" + d.l + "</br> <b style=\"font-size:1.1vw;\">Max width: </b>" + d.w + " </br> <b style=\"font-size:1.1vw;\">Max depth: </b>" + d.dep + "</br><b style=\"font-size:1.1vw;\">Water volume: </b>" + d.volumn + "</br>" )
-        .style('display', 'block')
-        .style('opacity', 2);
+        .style('display', 'block');
     
 
     //draw 6 measures together with pointers
     let lake_info_measure_svg = row.append('svg').attr('id','lake_measures');
-    var info_width = section_width*0.7,
-        info_height = section_height*0.4;
+    var info_width = section_width*0.6,
+        info_height = section_height*0.35;
     //let lake_info_measure_svg = info_div.append('svg');  
 
     lake_info_measure_svg.attr("width", info_width).attr("height", info_height);

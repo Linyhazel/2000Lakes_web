@@ -115,20 +115,6 @@ body{
   background-color: #02C39A; /*#f7ebc3*/
 }
 /*-----------------------------------------------for lake page------------------------------------------*/
-/*#lake_geojson{
-  position: absolute;
-  height: 20%;
-  width: 20%;
-  top: 15%;
-  left: 7%;
-}*/
-
-/*#lake_measures{
-  position: absolute;
-  right: 7%;
-  top: 15%;
-}
-*/
 #text_descrition{
   position: absolute;
   width: 100%;
@@ -140,22 +126,37 @@ body{
 
 #lake_row{
   position: absolute;
-  top: 15%;
-  height: 30%;
-  display: flex;
-  align-items: center;
-  /*text-align: center;*/
+  top: 12%;
+  height: 33%;
+  width: 100%;
+}
+
+#geo_and_stat{
+  position: relative;
+  height: 100%;
+  width: 30%;
+  left: 5%;
+}
+
+#lake_geojson{
+  position: relative;
+  height: 100%;
+  width: 100%;
 }
 
 #lake_data{
   font-size: 2vmin;
-  position: absolute;
-  top: 25%;
-  left: 7%;
-  /*width: 20%;
-  text-align: center;
-  padding: 3px 5px 3px 5px;
-  padding-top: 50px;*/
+  position: relative;
+  top: -80%;
+  padding-left: 20%;
+}
+
+#lake_measures{
+  position: relative;
+  height: 100%;
+  width: 58%;
+  top: -110%;
+  left: 33%;
 }
 
 #lake_imgs{
