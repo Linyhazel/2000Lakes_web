@@ -218,7 +218,7 @@ body{
 }
  
 .slides {
-  width: 500%;
+  width: 600%;
   height: 95%;
   display: flex;
 }
@@ -228,10 +228,18 @@ body{
 }
 
 .slide {
-  width: 20%;
+  width: 16.667%;
   transition: 2s;
   /*overflow: scroll;*/
   /*background-color: yellow;*/
+}
+
+.slide-content-one-col{
+  position: absolute;
+  width: 70%;
+  margin-top: 20px;
+  margin-left: 8%;
+  font-size: 2vmin;
 }
 
 .slide-content{
@@ -253,14 +261,12 @@ body{
 .navigation {
   position: absolute;
   width: 100%;
-  bottom: 0px;
   display: flex;
   justify-content: center;
 }
 
 .navigation-btn {
   border: 2px solid #DA291C;
-  margin-top: 5%;
   padding: 5px;
   border-radius: 10px;
   cursor: pointer;
@@ -285,19 +291,23 @@ body{
 }
 
 #radio2:checked~.first {
-  margin-left: -20%;
+  margin-left: -16.667%;
 }
 
 #radio3:checked~.first {
-  margin-left: -40%;
+  margin-left: -33.333%;
 }
 
 #radio4:checked~.first {
-  margin-left: -60%;
+  margin-left: -50%;
 }
 
 #radio5:checked~.first {
-  margin-left: -80%;
+  margin-left: -66.667%;
+}
+
+#radio6:checked~.first {
+  margin-left: -83.334%;
 }
 
 /*-----------------------------------------------for map section------------------------------------------*/
