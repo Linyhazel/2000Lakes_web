@@ -635,7 +635,7 @@ function lakeInfo(d){
         d.volumn = "NA";
     }
     let lake_data = lake_geo_bound_div.append('div').attr('id','lake_data'); 
-    lake_data.html("<b style=\"font-size:1.1vw;\">Max length: </b>" + d.l + "</br> <b style=\"font-size:1.1vw;\">Max width: </b>" + d.w + " </br> <b style=\"font-size:1.1vw;\">Max depth: </b>" + d.dep + "</br><b style=\"font-size:1.1vw;\">Water volume: </b>" + d.volumn + "</br>" )
+    lake_data.html("<b  style=\"font-size:1.1vw;\">Elevation: </b>" + d.elevation + " m</br> <b  style=\"font-size:1.1vw;\">Surface area: </b>" + d.area + " hectares" + "</br> <b style=\"font-size:1.1vw;\">Max length: </b>" + d.l + "</br> <b style=\"font-size:1.1vw;\">Max width: </b>" + d.w + " </br> <b style=\"font-size:1.1vw;\">Max depth: </b>" + d.dep + "</br><b style=\"font-size:1.1vw;\">Water volume: </b>" + d.volumn + "</br>" )
         .style('display', 'block');
     
 
