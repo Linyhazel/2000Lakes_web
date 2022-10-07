@@ -16,6 +16,8 @@ body{
 
 	width: 100vw;
 	height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
 
 	/* center vertically */
 	display: flex;
@@ -33,6 +35,9 @@ body{
 	font-size: 1.1vw;/* 2vmin;*/
   color: #011A38;
 }
+body::-webkit-scrollbar {
+  display: none;
+}
 
 #title{
   position: absolute;
@@ -43,6 +48,7 @@ body{
 
 .container-fluid{
   width: 100%;
+  overflow-x: hidden;
   overflow-y: scroll;
   scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
@@ -164,9 +170,20 @@ body{
   bottom: 25%;
   width: 100%;
   height: 30%;
-  /*background-color: yellow;*/
   white-space: nowrap;
   overflow-x: auto;
+}
+#lake_imgs::-webkit-scrollbar {
+  height: 0.5vw;
+}
+
+#lake_imgs::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+#lake_imgs::-webkit-scrollbar-thumb {
+  background: #90E0EF; 
+  border-radius: 50px;
 }
 
 .lake_img{
@@ -355,6 +372,10 @@ body{
   /*background-color: lightcoral;*/
   overflow-x: hidden;
   overflow-y: auto;
+}
+
+#dialogue::-webkit-scrollbar {
+  display: none;
 }
 
 .botMsg{

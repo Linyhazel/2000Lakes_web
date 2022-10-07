@@ -641,7 +641,7 @@ function lakeInfo(d){
 
     //draw 6 measures together with pointers
     let lake_info_measure_svg = row.append('svg').attr('id','lake_measures');
-    var info_width = section_width*0.6,
+    var info_width = section_width*0.58,
         info_height = section_height*0.35;
     //let lake_info_measure_svg = info_div.append('svg');  
 

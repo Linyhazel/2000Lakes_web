@@ -216,23 +216,23 @@ lake_id,Lake,Canton,Elevation,Area,is_lake_link,link,latlng,with_geojson,descrip
 215,Wenigerweier,St. Gallen,838,4.06,FALSE,,"[47.4184887, 9.414011]",TRUE,,,,,,,,,,,,,,,
 216,Stausee Solis,Graubünden,824,17.75,TRUE,https://en.wikipedia.org///wiki/Stausee_Solis,"[46.6771374, 9.539524799999999]",FALSE,"The Stausee Solis (""Solis reservoir"") is a reservoir on the Albula river, located between Alvaschein, Stierva and Tiefencastel, in the canton of Graubünden. Its surface area is 17.75 ha (43.9 acres). It was built in 1986 by the Electric Power Company of Zurich (ewz). A dam of 61 m (200 ft) height and a crown length of 75 m (246 ft) holds back the water in the lake. The water in the reservoir is used for energy production further downstream in the power plants Sils and Rothenbrunnen. This dam is used as daily storage. Because of the small size of the lake compared with its catchment area sediment aggregation plays an important role. Around 100,000 m3 (3,500,000 cu ft) of sediment settles down every year in the lake, so that by 2012 about 50% of the reservoir volume of 4.1 million cubic metres (3,300 acre⋅ft) was occupied by sediment. In 2012 a sediment bypass tunnel (SBT) was built, which operates only a few days every year, but eliminates sedimentation in the reservoir almost completely. But there are many investigations due to abrasion in the tunnel to make. The dam is located just east of the Solis Viaduct of the Albula Railway.",reservoir,,,,"4.1 million cubic metres (3,300 acre⋅ft) (1986) , ~1.5 million cubic metres (1,200 acre⋅ft) Mio m3 (2012)",,,,,,,,,
 217,Lac de Montsalvens,Fribourg,801,66.26,TRUE,https://en.wikipedia.org///wiki/Lac_de_Montsalvens,"[46.6128844, 7.1412551]",TRUE,"Lac de Montsalvens is a reservoir in the Canton of Fribourg, Switzerland. The reservoir has a capacity of 12.6 million m³ and a surface area of 0.74 km2 (0.29 sq mi). It is located on the road to Jaun Pass, between the villages of Broc and Charmey.The Grand Council of the canton of Fribourg decided construction of the dam on 17/18 May 1918. Designed by Alfred Stucky, the construction was completed by 1920 and in 1921 the reservoir filled for the first time.",reservoir,,,50 m (160 ft),"12.6 million cubic metres (10,200 acre⋅ft)",,,,,,,,,
-218,Stellisee,Valais,2538,,FALSE,,"[46.01349769999999, 7.8006047]",TRUE,,,,,,,Zermatt,02.09.21,2538,"8,65",316,"13,3","9,53",95050000,2580000000
-219,Grindjesee,Valais,2334,,FALSE,,"[46.0115108, 7.7913394]",TRUE,,,,,,,Zermatt,03.09.21,2334,"8,18",265,"12,8","8,65",2510000,2210000
-220,Grünsee,Valais,2303,,FALSE,,"[46.0056, 7.7857]",TRUE,,,,,,,Zermatt,04.09.21,2303,"8,93",315,"17,1","8,53",70025000,379000000
-221,Mossjesee,Valais,2139,,FALSE,,"[46.01045759531077, 7.779742209298814]",TRUE,,,,,,,Zermatt,05.09.21,2139,"8,08",295,13,"8,81",28550,5610
-222,Leisee,Valais,2232,,FALSE,,"[46.0150833, 7.772596599999999]",TRUE,,,,,,,Zermatt,06.09.21,2232,"9,25",250,"18,5","8,88",121000000,2570000000
-223,Lac de Tracouet,Valais,2171,,FALSE,,"[46.159680, 7.283814]",TRUE,,,,,,,Nendaz,12.09.21,2171,"8,87","27,2","17,9","8,28",97833333,103000000
-224,Grundsee,Valais,1842,,FALSE,,"[46.818188, 8.227511999999999]",TRUE,,,,,,,Lötschental,17.09.21,1842,"7,3","125,6","5,6","9,33",4865,7970
-225,Guggisee,Valais,2007,,FALSE,,"[46.435364, 7.854890]",TRUE,,,,,,,Lötschental,18.09.21,2007,"7,3",20,16,"8,39",9870000,421
-226,Faflersee,Valais,1796,,FALSE,,"[46.818188, 8.227511999999999]",FALSE,,,,,,,Lötschental,19.09.21,1796,"9,1","56,7","18,4","9,7",537000,347000
-228,Spilsee,Valais,2401,,FALSE,,"[46.4572209, 8.168681099999999]",TRUE,,,,,,,Bellwald,02.10.21,2401,"8,21","19,4","11,5","9,46",129730769,1160000000
-229,Mittelsee,Valais,2551,,FALSE,,"[46.460722, 8.165258]",TRUE,,,,,,,Bellwald,03.10.21,2551,"7,71","28,6","8,4","9,48",105000000,1250000000
-230,Wirbulsee,Valais,2658,,FALSE,,"[46.463249, 8.160951]",TRUE,,,,,,,Bellwald,04.10.21,2658,"7,631",7,"9,6","8,29",60375000,1320000000
-231,Lengsee,Valais,2707,,FALSE,,"[46.466131, 8.163720]",TRUE,,,,,,,Bellwald,05.10.21,2707,"6,85","3,1","9,15","8,75",55250000,1340000000
-232,Small Lac des Vaux,Valais,2544,,FALSE,,"[46.105326, 7.268570]",FALSE,,,,,,,Verbier,09.10.21,2544,"8,29",48,"6,5","9,3",48500,17800
-233,"Vordersee ""Marjalen-Stausee""",Valais,2360,,FALSE,,"[46.4415857, 8.106052499999999]",FALSE,,,,,,,Aletsch,15.10.21,2360,"7,83","10,2","8,5","8,86",42650,10600
-234,Petit Aletsch 1 (PA1),Valais,2350,,FALSE,,,FALSE,,,,,,,Aletsch,16.10.21,2350,"7,67","64,3","6,8","9,99",2995000,249000
-235,Petit Aletsch 2 (PA2),Valais,2350,,FALSE,,,FALSE,,,,,,,Aletsch,17.10.21,2350,"7,67","12,8","6,3","10,43",176950,7700
-236,Petit Aletsch 3 (PA3),Valais,2335,,FALSE,,,FALSE,,,,,,,Aletsch,18.10.21,2335,"8,21","60,4","4,9","11,07",7742,232
-237,Marjelensee,Valais,2302,,FALSE,,"[46.4408333, 8.0919444]",FALSE,,,,,,,Aletsch,19.10.21,2302,"8,14","57,3","4,4","10,35",29325,1520
-227,Lac Bleu,Valais,2090,,FALSE,,"[46.050484, 7.480085399999999]",TRUE,,,,,,,Arolla,25.10.21,2090,"8,18",256,"3,7","10,98",398,169
+218,Stellisee,Valais,2538,1.43,FALSE,,"[46.01349769999999, 7.8006047]",TRUE,,,,,,,Zermatt,02.09.21,2538,"8,65",316,"13,3","9,53",95050000,2580000000
+219,Grindjesee,Valais,2334,0.25,FALSE,,"[46.0115108, 7.7913394]",TRUE,,,,,,,Zermatt,03.09.21,2334,"8,18",265,"12,8","8,65",2510000,2210000
+220,Grünsee,Valais,2303,0.24,FALSE,,"[46.0056, 7.7857]",TRUE,,,,,,,Zermatt,04.09.21,2303,"8,93",315,"17,1","8,53",70025000,379000000
+221,Mossjesee,Valais,2139,0.5,FALSE,,"[46.01045759531077, 7.779742209298814]",TRUE,,,,,,,Zermatt,05.09.21,2139,"8,08",295,13,"8,81",28550,5610
+222,Leisee,Valais,2232,0.53,FALSE,,"[46.0150833, 7.772596599999999]",TRUE,,,,,,,Zermatt,06.09.21,2232,"9,25",250,"18,5","8,88",121000000,2570000000
+223,Lac de Tracouet,Valais,2171,2.05,FALSE,,"[46.159680, 7.283814]",TRUE,,,,,,,Nendaz,12.09.21,2171,"8,87","27,2","17,9","8,28",97833333,103000000
+224,Grundsee,Valais,1842,0.41,FALSE,,"[46.437000, 7.875467]",TRUE,,,,,,,Lötschental,17.09.21,1842,"7,3","125,6","5,6","9,33",4865,7970
+225,Guggisee,Valais,2007,0.08,FALSE,,"[46.435364, 7.854890]",TRUE,,,,,,,Lötschental,18.09.21,2007,"7,3",20,16,"8,39",9870000,421
+226,Faflersee,Valais,1796,0.08,FALSE,,"[46.435379, 7.854857]",FALSE,,,,,,,Lötschental,19.09.21,1796,"9,1","56,7","18,4","9,7",537000,347000
+228,Spilsee,Valais,2401,0.96,FALSE,,"[46.4572209, 8.168681099999999]",TRUE,,,,,,,Bellwald,02.10.21,2401,"8,21","19,4","11,5","9,46",129730769,1160000000
+229,Mittelsee,Valais,2551,0.7,FALSE,,"[46.460722, 8.165258]",TRUE,,,,,,,Bellwald,03.10.21,2551,"7,71","28,6","8,4","9,48",105000000,1250000000
+230,Wirbulsee,Valais,2658,0.85,FALSE,,"[46.463249, 8.160951]",TRUE,,,,,,,Bellwald,04.10.21,2658,"7,631",7,"9,6","8,29",60375000,1320000000
+231,Lengsee,Valais,2707,1.11,FALSE,,"[46.466131, 8.163720]",TRUE,,,,,,,Bellwald,05.10.21,2707,"6,85","3,1","9,15","8,75",55250000,1340000000
+232,Small Lac des Vaux,Valais,2544,1.24,FALSE,,"[46.105326, 7.268570]",FALSE,,,,,,,Verbier,09.10.21,2544,"8,29",48,"6,5","9,3",48500,17800
+233,"Vordersee ""Marjalen-Stausee""",Valais,2360,5.32,FALSE,,"[46.4415857, 8.106052499999999]",FALSE,,,,,,,Aletsch,15.10.21,2360,"7,83","10,2","8,5","8,86",42650,10600
+234,Petit Aletsch 1 (PA1),Valais,2350,,FALSE,,"[46.439853, 8.099321]",TRUE,,,,,,,Aletsch,16.10.21,2350,"7,67","64,3","6,8","9,99",2995000,249000
+235,Petit Aletsch 2 (PA2),Valais,2350,,FALSE,,"[46.439428, 8.101675]",TRUE,,,,,,,Aletsch,17.10.21,2350,"7,67","12,8","6,3","10,43",176950,7700
+236,Petit Aletsch 3 (PA3),Valais,2335,,FALSE,,"[46.439281, 8.097269]",TRUE,,,,,,,Aletsch,18.10.21,2335,"8,21","60,4","4,9","11,07",7742,232
+237,Marjelensee,Valais,2302,0.32,FALSE,,"[46.4408333, 8.0919444]",FALSE,,,,,,,Aletsch,19.10.21,2302,"8,14","57,3","4,4","10,35",29325,1520
+227,Lac Bleu,Valais,2090,0.21,FALSE,,"[46.050484, 7.480085399999999]",TRUE,,,,,,,Arolla,25.10.21,2090,"8,18",256,"3,7","10,98",398,169
