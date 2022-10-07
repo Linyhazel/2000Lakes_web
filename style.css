@@ -172,6 +172,7 @@ body::-webkit-scrollbar {
   height: 30%;
   white-space: nowrap;
   overflow-x: auto;
+  overflow-y: hidden;
 }
 #lake_imgs::-webkit-scrollbar {
   height: 0.5vw;
