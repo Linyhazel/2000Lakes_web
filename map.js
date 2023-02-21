@@ -602,7 +602,7 @@ function lakeInfo(d){
     var width = section_width*0.3,
         height = section_height*0.25;
     var lake_svg_g = lake_svg.append("g");
-    d3.json("data/lakes/"+d.lakeId.toString()+".geojson").then((data) =>{
+    d3.json("data/lakes_geojson/"+d.lakeId.toString()+".geojson").then((data) =>{
         var lake_bounds  = path_swiss.bounds(data),
             lake_dx = lake_bounds[1][0] - lake_bounds[0][0],
             lake_dy = lake_bounds[1][1] - lake_bounds[0][1],
@@ -821,7 +821,7 @@ function lakeInfo(d){
         }
         img_str += "</div>";
         newWindow.document.write(img_str);
-        newWindow.document.write("<img id=\"gglogo\" src=\"data/desktop/powered_by_google_on_white_hdpi.png\">");
+        newWindow.document.write("<img id=\"gglogo\" src=\"data/google_logo/powered_by_google_on_white_hdpi.png\">");
     }
 
 }
