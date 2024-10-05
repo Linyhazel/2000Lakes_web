@@ -275,9 +275,10 @@ function draw_machine(){
             .attr("transform", "translate("+(gashapon_width*0.2)+","+(gashapon_height*0.04)+")");
     gashapon_g.append('text')
             .text("Lake Gashapon")
-            .attr("font-size", "2.5vmin")
+            .attr("font-size", "15px")
             .attr("fill","#011A38")
-            .attr("transform", "translate("+(gashapon_width*0.25)+","+(gashapon_height*0.1)+")");
+            .attr("text-anchor","middle")
+            .attr("transform", "translate("+(gashapon_width*0.45)+","+(gashapon_height*0.1)+")");
 
     // 4 nails
     gashapon_g.append('circle')

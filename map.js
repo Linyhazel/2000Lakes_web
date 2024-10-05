@@ -635,7 +635,7 @@ function lakeInfo(d){
         d.volumn = "NA";
     }
     let lake_data = lake_geo_bound_div.append('div').attr('id','lake_data'); 
-    lake_data.html("<b  style=\"font-size:1.1vw;\">Elevation: </b>" + d.elevation + " m</br> <b  style=\"font-size:1.1vw;\">Surface area: </b>" + d.area + " hectares" + "</br> <b style=\"font-size:1.1vw;\">Max length: </b>" + d.l + "</br> <b style=\"font-size:1.1vw;\">Max width: </b>" + d.w + " </br> <b style=\"font-size:1.1vw;\">Max depth: </b>" + d.dep + "</br><b style=\"font-size:1.1vw;\">Water volume: </b>" + d.volumn + "</br>" )
+    lake_data.html("<b  style=\"font-size:12px;\">Elevation: </b>" + d.elevation + " m</br> <b  style=\"font-size:12px;\">Surface area: </b>" + d.area + " hectares" + "</br> <b style=\"font-size:12px;\">Max length: </b>" + d.l + "</br> <b style=\"font-size:12px;\">Max width: </b>" + d.w + " </br> <b style=\"font-size:12px;\">Max depth: </b>" + d.dep + "</br><b style=\"font-size:12px;\">Water volume: </b>" + d.volumn + "</br>" )
         .style('display', 'block');
     
 
@@ -660,7 +660,7 @@ function lakeInfo(d){
                 .attr("x", info_width*0.04)
                 .attr("y", 40)
                 .text("Abundance of Bacteria and Archaea (gc/L)")
-                .attr("font-size", "1vw");
+                .attr("font-size", "12px");
         }
         else if(i == 1){
             g.attr("id", "s18_data");
@@ -669,7 +669,7 @@ function lakeInfo(d){
                 .attr("x", info_width*0.04)
                 .attr("y", 40)
                 .text("Abundance of Eukaryotic DNA (gc/L)")
-                .attr("font-size", "1vw");
+                .attr("font-size", "12px");
         }
         else if(i == 2){
             g.attr("id", "temp_data");
@@ -678,7 +678,7 @@ function lakeInfo(d){
                 .attr("x", info_width*0.15)
                 .attr("y", 40)
                 .text("Temperature (°C)")
-                .attr("font-size", "1vw");
+                .attr("font-size", "12px");
         }
         else if(i == 3){
             g.attr("id", "do_data");
@@ -687,7 +687,7 @@ function lakeInfo(d){
                 .attr("x", info_width*0.15)
                 .attr("y", 40)
                 .text("Dissolved Oxygen (mg/L)")
-                .attr("font-size", "1vw");
+                .attr("font-size", "12px");
         }
         else if(i == 4){
             g.attr("id", "cond_data");
@@ -696,7 +696,7 @@ function lakeInfo(d){
                 .attr("x", info_width*0.15)
                 .attr("y", 40)
                 .text("Conductivity (µS/cm)")
-                .attr("font-size", "1vw");
+                .attr("font-size", "12px");
         }
         else{
             g.attr("id", "ph_data");
@@ -705,14 +705,14 @@ function lakeInfo(d){
                 .attr("x", info_width*0.15)
                 .attr("y", 40)
                 .text("pH Value")
-                .attr("font-size", "1vw");
+                .attr("font-size", "12px");
         }   
 
         g.append("text")
             .attr("x", 0)
             .attr("y", 25)
             .text("0")
-            .attr("font-size", "1vw");
+            .attr("font-size", "12px");
 
         g.selectAll("rect")
             .data(arr[i])
@@ -732,7 +732,7 @@ function lakeInfo(d){
                 .attr("x", (d)=>scale(d.range[1]))
                 .attr("y", 25)
                 .text((d)=>"10"+superscript[d.range[1]])
-                .attr("font-size", "1vw");
+                .attr("font-size", "12px");
         }
         else{
             g.selectAll("xlabels")
@@ -742,7 +742,7 @@ function lakeInfo(d){
                 .attr("x", (d)=>scale(d.range[1]))
                 .attr("y", 25)
                 .text((d)=>String(d.range[1]))
-                .attr("font-size", "1vw");
+                .attr("font-size", "12px");
         }
 
         // draw pointer
