@@ -615,7 +615,7 @@ function lakeInfo(d){
             lake_scale = .95 / Math.max(lake_dx / width, lake_dy / height),
             lake_translate = [width / 3 - lake_scale * lake_x, height / 2 - lake_scale * lake_y];
 
-        lake_svg_g.attr("transform", "translate(" + lake_translate + ")scale(" + lake_scale + ")");
+        lake_svg_g.attr("transform", `translate(${lake_translate[0]},${lake_translate[0]})scale(${lake_scale})`);
         lake_svg_g.selectAll("path")
             .data(data.features)
             .enter().append("path")
