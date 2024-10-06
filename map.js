@@ -596,12 +596,11 @@ function lakeInfo(d){
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     var newWindowRoot = d3.select(newWindow.document.body).select('#lake-page-content');
     
-    const titleDiv = newWindowRoot.append('div')
-    titleDiv.html("<div id=\"text_descrition\">"+d.name+" <a href=\""+wiki_l+"\" target=\"_blank\" title=\"to Wiki\"><img src=\"data/wiki.png\" height=\"20px\"></a></div>");
+    const contentDiv = newWindowRoot.append('div').attr('id','lake-main-content')
+    contentDiv.html("<div id=\"text_descrition\">"+d.name+" <a href=\""+wiki_l+"\" target=\"_blank\" title=\"to Wiki\"><img src=\"data/wiki.png\" height=\"20px\"></a></div>");
 
-    let row = newWindowRoot.append('div').attr('id','lake_row');
 
-    let lake_geo_bound_div = row.append('div').attr('id','geo_and_stat')
+    let lake_geo_bound_div = contentDiv.append('div').attr('id','geo_and_stat')
     let lake_svg = lake_geo_bound_div.append('svg').attr('id','lake_geojson');  
     var width = section_width*0.3,
         height = section_height*0.25;
@@ -644,7 +643,7 @@ function lakeInfo(d){
     
 
     //draw 6 measures together with pointers
-    let lake_info_measure_svg = row.append('svg').attr('id','lake_measures');
+    let lake_info_measure_svg = contentDiv.append('svg').attr('id','lake_measures');
     var info_width = section_width*0.58,
         info_height = section_height*0.35;
     //let lake_info_measure_svg = info_div.append('svg');  
