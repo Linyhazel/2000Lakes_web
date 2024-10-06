@@ -597,7 +597,7 @@ function lakeInfo(d){
     var newWindowRoot = d3.select(newWindow.document.body).select('#lake-page-content');
     
     const titleDiv = newWindowRoot.append('div')
-    titleDiv.html("<div id=\"text_descrition\"><p>"+d.name+" <a href=\""+wiki_l+"\" target=\"_blank\" title=\"to Wiki\"><img src=\"data/wiki.png\" height=\"20px\"></a></p></div>");
+    titleDiv.html("<div id=\"text_descrition\">"+d.name+" <a href=\""+wiki_l+"\" target=\"_blank\" title=\"to Wiki\"><img src=\"data/wiki.png\" height=\"20px\"></a></div>");
 
     let row = newWindowRoot.append('div').attr('id','lake_row');
 
