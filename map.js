@@ -613,7 +613,7 @@ function lakeInfo(d){
             lake_y = (lake_bounds[0][1] + lake_bounds[1][1]) / 2,
                         
             lake_scale = .95 / Math.max(lake_dx / width, lake_dy / height),
-            lake_translate = [width / 2 - lake_scale * lake_x, height / 2 - lake_scale * lake_y];
+            lake_translate = [width / 3 - lake_scale * lake_x, height / 2 - lake_scale * lake_y];
 
         lake_svg_g.attr("transform", "translate(" + lake_translate + ")scale(" + lake_scale + ")");
         lake_svg_g.selectAll("path")
