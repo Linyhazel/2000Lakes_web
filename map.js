@@ -590,10 +590,14 @@ function lakeInfo(d){
     if(d.link){
         wiki_l = d.link;
     }
-    newWindow.document.write("<div id=\"text_descrition\">"+d.name+" <a href=\""+wiki_l+"\" target=\"_blank\" title=\"to Wiki\"><img src=\"data/wiki.png\" height=\"20px\"></a></div>");
+
+    newWindow.document.write("<div id=\"lake-page-content\" class=\"svg-container\"></div>");
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    var newWindowRoot = d3.select(newWindow.document.body);
+    var newWindowRoot = d3.select(newWindow.document.body).select('#lake-page-content');
+    
+    const titleDiv = newWindowRoot.append('div')
+    titleDiv.html("<div id=\"text_descrition\"><p>"+d.name+" <a href=\""+wiki_l+"\" target=\"_blank\" title=\"to Wiki\"><img src=\"data/wiki.png\" height=\"20px\"></a></p></div>");
 
     let row = newWindowRoot.append('div').attr('id','lake_row');
 
@@ -635,7 +639,7 @@ function lakeInfo(d){
         d.volumn = "NA";
     }
     let lake_data = lake_geo_bound_div.append('div').attr('id','lake_data'); 
-    lake_data.html("<b  style=\"font-size:12px;\">Elevation: </b>" + d.elevation + " m</br> <b  style=\"font-size:12px;\">Surface area: </b>" + d.area + " hectares" + "</br> <b style=\"font-size:12px;\">Max length: </b>" + d.l + "</br> <b style=\"font-size:12px;\">Max width: </b>" + d.w + " </br> <b style=\"font-size:12px;\">Max depth: </b>" + d.dep + "</br><b style=\"font-size:12px;\">Water volume: </b>" + d.volumn + "</br>" )
+    lake_data.html("<b  style=\"font-size:14px;\">Elevation: </b>" + d.elevation + " m</br> <b  style=\"font-size:14px;\">Surface area: </b>" + d.area + " hectares" + "</br> <b style=\"font-size:14px;\">Max length: </b>" + d.l + "</br> <b style=\"font-size:14px;\">Max width: </b>" + d.w + " </br> <b style=\"font-size:14px;\">Max depth: </b>" + d.dep + "</br><b style=\"font-size:14px;\">Water volume: </b>" + d.volumn + "</br>" )
         .style('display', 'block');
     
 
@@ -782,47 +786,8 @@ function lakeInfo(d){
             .attr("fill","#011A38");
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //get lake imgs from google api
-    //var url = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input="+d.name+"&inputtype=textquery&fields=place_id&key=AIzaSyC9WNb8WzI-qcbOO_dP7soqYsXgEXeFcpY"
-
-    var request = {
-        query: d.name,
-        fields: ["place_id"],
-    };
-    var img_request = {};
-
-    service = new google.maps.places.PlacesService(map_invisible);
-    service.findPlaceFromQuery(request, (results, status) => {
-        if (status === google.maps.places.PlacesServiceStatus.OK && results) {
-            img_request = {placeId: results[0].place_id, fields: ["photos"]};
-            //console.log(img_request);
-            service.getDetails(img_request, (result, status) => {
-                if (status === google.maps.places.PlacesServiceStatus.OK) {
-                    createPhoto(result);
-                }
-            });
-        }
-    });
-
-    newWindow.document.write("<iframe style=\"width:100%; height: 100px; position: absolute; bottom: 0px; border:none;\" src=\"./footer.html\"></iframe>")
-    
-
-    function createPhoto(place) {
-        let img_str = "<div id=\"lake_imgs\">";
-        var photos = place.photos;
-        //console.log(place);
-        if (!photos) {
-            console.log("no photo");
-        }
-        for (var i=0;i<photos.length;i++){
-            //console.log(photos[i]);
-            img_str += "<img class=\"lake_img\" src=\""+photos[i].getUrl({'maxWidth': 1000, 'maxHeight': map_height*0.3})+"\">";
-        }
-        img_str += "</div>";
-        newWindow.document.write(img_str);
-        newWindow.document.write("<img id=\"gglogo\" src=\"data/google_logo/powered_by_google_on_white_hdpi.png\">");
-    }
+    const footerDiv = newWindowRoot.append('div')
+    footerDiv.html("<iframe style=\"width:100%; height: 100px; position: absolute; bottom: 0px; border:none;\" src=\"./footer.html\"></iframe>")
 
 }
 

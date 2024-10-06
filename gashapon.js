@@ -34,11 +34,11 @@ function openBall(lake_ind){
 				    else{
 				    	area_str = "unknown";				    	
 				    }
-				    //gashapon_content.append('br');
+		
 				    gashapon_content.append('p')
 				    	.text("Hey, the lake you get is the lake "+lake_obj.name+". It locates in Canton "+lake_obj.canton+". Its elevation is "+
 				    			lake_obj.elevation+" meters and its surface area is "+area_str+".");
-				    //gashapon_content.append('br');
+		
 				    gashapon_content.append('p')
 				    	.text("Click the lake name to see more detailed information. Would you like to help create or enrich its Wikipedia page with the information provided?")
 		    	});

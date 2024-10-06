@@ -129,7 +129,7 @@ body::-webkit-scrollbar {
   width: 100%;
   top: 7%;
   text-align: center;
-  font-size:15px; 
+  font-size:20px; 
   width: 100%;
 }
 
@@ -166,40 +166,6 @@ body::-webkit-scrollbar {
   width: 58%;
   top: -110%;
   left: 33%;
-}
-
-#lake_imgs{
-  position: absolute;
-  bottom: 25%;
-  width: 100%;
-  height: 30%;
-  white-space: nowrap;
-  overflow-x: auto;
-  overflow-y: hidden;
-}
-#lake_imgs::-webkit-scrollbar {
-  height: 8px;
-}
-
-#lake_imgs::-webkit-scrollbar-track {
-  background: #f1f1f1; 
-}
-
-#lake_imgs::-webkit-scrollbar-thumb {
-  background: #90E0EF; 
-  border-radius: 50px;
-}
-
-.lake_img{
-  height: 100%;
-  padding: 5px;
-}
-
-#gglogo{
-  position: absolute;
-  bottom: 21%;
-  left: 10px;
-  height: 3%;
 }
 
 /*-----------------------------------------------for the first section------------------------------------------*/
@@ -535,7 +501,7 @@ body::-webkit-scrollbar {
   left: 20%;
   top: 5%;
   max-width: 60%;
-  min-width:600px;
+  min-width:700px;
   max-height: 80%;
   min-height: 600px;
   aspect-ratio: 2 / 1.5;
@@ -558,7 +524,7 @@ body::-webkit-scrollbar {
   width: 20%;
   aspect-ratio: 1 / 1.4;
   /*background-color: lightgrey;*/
-  left: 55%;
+  left: 60%;
   top: 10%;
 }
 
@@ -573,7 +539,7 @@ body::-webkit-scrollbar {
   /*opacity: 0.5;*/
   text-align: center;
 
-  transform-origin: 50% 100%; /*define the origin of the transform*/
+  transform-origin: 60% 100%; /*define the origin of the transform*/
   transform: scale(0); /*originally not shown!*/
   animation: lakeinfo 0.15s ease-out 0s forwards; /*define the animation!*/
 }
